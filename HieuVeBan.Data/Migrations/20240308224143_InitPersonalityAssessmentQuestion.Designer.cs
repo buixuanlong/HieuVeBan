@@ -4,6 +4,7 @@ using HieuVeBan.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240308224143_InitPersonalityAssessmentQuestion")]
+    partial class InitPersonalityAssessmentQuestion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,8 +95,7 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnName("id");
 
                     b.Property<Guid>("PersonalityAssessmentMethodId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("personality_assessment_method_id");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("QuestionName")
                         .IsRequired()

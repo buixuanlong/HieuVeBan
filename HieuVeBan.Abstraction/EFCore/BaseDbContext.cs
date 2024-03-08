@@ -65,7 +65,7 @@ namespace HieuVeBan.Abstraction.EFCore
 
             foreach (var entry in entries)
             {
-                entry!.UpdatedDateTime = DateTime.UtcNow;
+                entry!.UpdatedDateTime = DateTime.Now;
                 entry.UpdatedUserId = _userContext.GetUserId();
             }
         }

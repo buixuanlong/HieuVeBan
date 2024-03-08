@@ -67,7 +67,7 @@ namespace HieuVeBan.Abstraction.EFCore.Configuration
 
         protected override object NextValue([NotNull] EntityEntry entry)
         {
-            return DateTime.UtcNow;
+            return DateTime.Now;
         }
     }
     public class CreatedUserIdValueGenerator : ValueGenerator

@@ -16,5 +16,6 @@ namespace HieuVeBan.Data
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<PersonalityAssessmentMethod> PersonalityAssessmentMethods { get; set; }
+        public DbSet<PersonalityAssessmentQuestion> PersonalityAssessmentQuestions { get; set; }
     }
 }

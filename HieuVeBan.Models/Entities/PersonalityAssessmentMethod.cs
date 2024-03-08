@@ -1,15 +1,14 @@
-﻿using HieuVeBan.Abstraction.Interfaces;
-using HieuVeBan.Models.Abstractions.Entities;
+﻿using HieuVeBan.Models.Abstractions.Entities;
 
 namespace HieuVeBan.Models.Entities
 {
-    public sealed class PersonalityAssessmentMethod : BaseEntity<Guid>, ICreatedDateTime
+    public class PersonalityAssessmentMethod : BaseEntity<Guid>
     {
         public string Name { get; set; } = null!;
         public string Author { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string Note { get; set; } = null!;
 
-        public DateTime CreatedDateTime { get; set; }
+        public virtual ICollection<PersonalityAssessmentQuestion> PersonalityAssessmentQuestions { get; set; } = new List<PersonalityAssessmentQuestion>();
     }
 }
