@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HieuVeBan", "HieuVeBan\HieuVeBan.csproj", "{C0175636-1D08-4488-A0D2-1A22D9A6255D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HieuVeBan.Data", "HieuVeBan.Data\HieuVeBan.Data.csproj", "{9E0A3E24-14E2-437D-85B4-9C62718E45B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HieuVeBan.Abstraction", "HieuVeBan.Abstraction\HieuVeBan.Abstraction.csproj", "{660AD892-128F-4472-BC7D-6FBCA275CF3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HieuVeBan.Models", "HieuVeBan.Models\HieuVeBan.Models.csproj", "{E802ECA2-4FC9-4FF6-A740-25397E45C120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HieuVeBan.Contracts", "HieuVeBan.Contracts\HieuVeBan.Contracts.csproj", "{F7DA0337-4595-4788-9323-250AD758C868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HieuVeBan.Services", "HieuVeBan.Services\HieuVeBan.Services.csproj", "{EC786922-86A4-4934-B312-B4118D88F9F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0175636-1D08-4488-A0D2-1A22D9A6255D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0175636-1D08-4488-A0D2-1A22D9A6255D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0175636-1D08-4488-A0D2-1A22D9A6255D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0175636-1D08-4488-A0D2-1A22D9A6255D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0A3E24-14E2-437D-85B4-9C62718E45B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0A3E24-14E2-437D-85B4-9C62718E45B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0A3E24-14E2-437D-85B4-9C62718E45B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0A3E24-14E2-437D-85B4-9C62718E45B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660AD892-128F-4472-BC7D-6FBCA275CF3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660AD892-128F-4472-BC7D-6FBCA275CF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660AD892-128F-4472-BC7D-6FBCA275CF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660AD892-128F-4472-BC7D-6FBCA275CF3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E802ECA2-4FC9-4FF6-A740-25397E45C120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E802ECA2-4FC9-4FF6-A740-25397E45C120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E802ECA2-4FC9-4FF6-A740-25397E45C120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E802ECA2-4FC9-4FF6-A740-25397E45C120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DA0337-4595-4788-9323-250AD758C868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DA0337-4595-4788-9323-250AD758C868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DA0337-4595-4788-9323-250AD758C868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DA0337-4595-4788-9323-250AD758C868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC786922-86A4-4934-B312-B4118D88F9F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC786922-86A4-4934-B312-B4118D88F9F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC786922-86A4-4934-B312-B4118D88F9F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC786922-86A4-4934-B312-B4118D88F9F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98ADEB9C-72ED-41E1-AD8C-7FD14BD18C47}
+	EndGlobalSection
+EndGlobal
