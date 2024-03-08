@@ -13,6 +13,9 @@ namespace HieuVeBan.Data.Configurations
         {
             base.Configure(builder);
 
+            builder.Property(x => x.Id)
+                .HasColumnName("id");
+
             builder.Property(x => x.UserName)
                 .HasColumnName("user_name")
                 .IsRequired()

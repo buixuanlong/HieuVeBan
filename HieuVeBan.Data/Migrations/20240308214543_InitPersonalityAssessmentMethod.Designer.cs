@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240308184552_InitAppUser")]
-    partial class InitAppUser
+    [Migration("20240308214543_InitPersonalityAssessmentMethod")]
+    partial class InitPersonalityAssessmentMethod
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,31 +29,14 @@ namespace HieuVeBan.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasColumnName("created_datetime");
-
-                    b.Property<Guid>("CreatedUserId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("created_userid");
+                        .HasColumnName("id");
 
                     b.Property<string>("SecretKey")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)")
                         .HasColumnName("secret_key");
-
-                    b.Property<DateTime?>("UpdatedDateTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("updated_datetime");
-
-                    b.Property<Guid?>("UpdatedUserId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("updated_userid");
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
@@ -67,13 +50,46 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasColumnName("user_name");
 
-                    b.Property<byte[]>("row_version")
-                        .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("app_user", "dbo");
+                });
+
+            modelBuilder.Entity("HieuVeBan.Models.Entities.PersonalityAssessmentMethod", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("author");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_datetime");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("note");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("personality_assessment_method", "dbo");
                 });
 #pragma warning restore 612, 618
         }
