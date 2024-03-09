@@ -1,6 +1,4 @@
-using HieuVeBan.Abstraction.Interfaces;
-using HieuVeBan.Configurations;
-using HieuVeBan.Models;
+using HieuVeBan.Contracts.Services;
 using HieuVeBan.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +7,11 @@ namespace HieuVeBan.Controllers
 {
     [ApiController]
     [Route("api/token")]
-    public class UsersController(ITokenService tokenService) : Controller
+    public class UsersController(
+        IAppUserService appUserService,
+        ITokenService tokenService) : Controller
     {
+        private readonly IAppUserService _appUserService = appUserService;
         private readonly ITokenService _tokenService = tokenService;
 
         [AllowAnonymous]
@@ -18,21 +19,12 @@ namespace HieuVeBan.Controllers
             [FromForm] LoginModel model,
             CancellationToken cancellationToken)
         {
-            if (model.UserName == "phongnd" && model.Password == "123456")
-            {
-                var res = await _tokenService.GenerateTokenAsync(new IdentityModel
-                {
-                    UserId = Guid.NewGuid(),
-                    UserName = model.UserName,
-                    UserEmail = "phongnd.dev@gmail.com",
-                    ClientId = Guid.NewGuid().ToString(),
-                    Scopes = ["external", "api"]
-                }, cancellationToken: cancellationToken);
+            var ur = await _appUserService.LoginAsync(model.UserName, model.Password, cancellationToken);
+            if (ur.IsFailure)
+                return BadRequest(new { Message = ur.Error.Name });
 
-                return Ok(res);
-            }
-
-            return BadRequest(new { Message = "Invalid account" });
+            var tokenRes = await _tokenService.GenerateTokenAsync(ur.Value, cancellationToken: cancellationToken);
+            return Ok(tokenRes);
         }
     }
 

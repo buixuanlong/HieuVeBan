@@ -4,6 +4,7 @@ using HieuVeBan.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240309065535_UpdateAppUser")]
+    partial class UpdateAppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +60,6 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnName("user_name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "UserName" }, "u_idx_app_user_username")
-                        .IsUnique();
 
                     b.ToTable("app_user", "dbo");
                 });

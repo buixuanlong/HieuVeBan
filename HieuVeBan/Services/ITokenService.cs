@@ -1,4 +1,5 @@
 using HieuVeBan.Models;
+using HieuVeBan.Models.DTOs;
 
 namespace HieuVeBan.Services;
 

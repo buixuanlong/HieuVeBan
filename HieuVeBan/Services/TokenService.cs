@@ -1,11 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 using HieuVeBan.Helpers;
 using HieuVeBan.Models;
-using HieuVeBan.Options;
+using HieuVeBan.Models.DTOs;
+using HieuVeBan.Models.Options;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace HieuVeBan.Services;
 
@@ -61,4 +60,5 @@ public class TokenService(
     {
         return (long)dateTime.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
     }
+
 }

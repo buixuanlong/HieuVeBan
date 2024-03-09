@@ -1,6 +1,4 @@
-using System.Text.Json.Serialization;
-
-namespace HieuVeBan.Models;
+namespace HieuVeBan.Models.DTOs;
 
 public class IdentityModel
 {
@@ -9,13 +7,4 @@ public class IdentityModel
     public required string UserEmail { get; set; }
     public required string ClientId { get; set; }
     public required List<string> Scopes { get; set; } = [];
-}
-
-public record TokenResult
-{
-    [JsonPropertyName("access_token")]
-    public required string Token { get; init; }
-
-    [JsonPropertyName("expires_in")]
-    public required int ExpiresIn { get; init; }
 }
