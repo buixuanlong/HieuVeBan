@@ -27,11 +27,8 @@ class AppUserService(
     {
         var query = _applicationDbContext.AppUsers.AsQueryable();
 
-        System.Console.WriteLine(queryParams.OrderBy);
-        System.Console.WriteLine(queryParams.Search);
-
         if (!string.IsNullOrWhiteSpace(queryParams.Search))
-            query = query.Where(x => EF.Functions.Like(x.UserName, $"%{queryParams.Search}%"));
+            query = query.ContainWithCollation(x => x.UserName, queryParams.Search);
 
         query = query.OrderBy(x => x.UserName);
 
