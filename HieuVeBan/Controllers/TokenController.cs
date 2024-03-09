@@ -32,7 +32,7 @@ namespace HieuVeBan.Controllers
                 return Ok(res);
             }
 
-            return BadRequest(model);
+            return BadRequest(new { Message = "Invalid account" });
         }
     }
 
