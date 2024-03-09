@@ -1,9 +1,9 @@
-using System.Text;
 using HieuVeBan.Abstraction.Interfaces;
+using HieuVeBan.Abstraction.Security;
 using HieuVeBan.Configurations;
 using HieuVeBan.Data;
 using HieuVeBan.Helpers;
-using HieuVeBan.Options;
+using HieuVeBan.Models.Options;
 using HieuVeBan.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +19,12 @@ public static class DependencyInjection
         services.AddAppAuthorization();
         services.AddAppAuthentication(configuration);
 
+        services.ConfigApiVersioning();
         services.AddSingleton(TimeProvider.System);
         services.AddScoped<IUserContext, UserContext>();
         services.AddJwtService(configuration);
 
+        services.AddServices(configuration);
         services.AddApplicationDbContext(configuration);
 
         return services;

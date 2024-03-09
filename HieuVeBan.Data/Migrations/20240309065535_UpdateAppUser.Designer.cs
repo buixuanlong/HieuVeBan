@@ -4,6 +4,7 @@ using HieuVeBan.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240309065535_UpdateAppUser")]
+    partial class UpdateAppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,57 +61,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "UserName" }, "u_idx_app_user_username")
-                        .IsUnique();
-
                     b.ToTable("app_user", "dbo");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.HollandAnswer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
-                    b.Property<int>("Mark")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("name");
-
-                    b.Property<string>("ShortName")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("short_name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("holland_answer", "dbo");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIAnswer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("name");
-
-                    b.Property<Guid>("PersonalityAssessmentQuestionId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("personality_assessment_question_id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonalityAssessmentQuestionId");
-
-                    b.ToTable("mbti_answer", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.PersonalityAssessmentMethod", b =>
@@ -168,17 +121,6 @@ namespace HieuVeBan.Data.Migrations
                     b.HasIndex("PersonalityAssessmentMethodId");
 
                     b.ToTable("personality_assessment_question", "dbo");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIAnswer", b =>
-                {
-                    b.HasOne("HieuVeBan.Models.Entities.PersonalityAssessmentQuestion", "PersonalityAssessmentQuestion")
-                        .WithMany()
-                        .HasForeignKey("PersonalityAssessmentQuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonalityAssessmentQuestion");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.PersonalityAssessmentQuestion", b =>
