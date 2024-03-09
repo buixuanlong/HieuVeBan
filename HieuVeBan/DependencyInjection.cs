@@ -1,5 +1,6 @@
 using HieuVeBan.Abstraction.Interfaces;
 using HieuVeBan.Abstraction.Security;
+using HieuVeBan.Configurations;
 using HieuVeBan.Data;
 using HieuVeBan.Helpers;
 using HieuVeBan.Models.Options;
@@ -18,6 +19,7 @@ public static class DependencyInjection
         services.AddAppAuthorization();
         services.AddAppAuthentication(configuration);
 
+        services.ConfigApiVersioning();
         services.AddSingleton(TimeProvider.System);
         services.AddScoped<IUserContext, UserContext>();
         services.AddJwtService(configuration);

@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -6,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace HieuVeBan.Controllers
 {
     [ApiController]
-    [Route("api/token")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/token")]
     public class UsersController(
         IAppUserService appUserService,
         ITokenService tokenService) : Controller

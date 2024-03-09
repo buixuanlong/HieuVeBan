@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using HieuVeBan.Abstraction.Security;
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Models.QueryParam;
@@ -9,7 +10,8 @@ namespace HieuVeBan.Controllers
 {
     [Authorize(Policy = SecurityConstant.Policies.InternalPolicy)]
     [ApiController]
-    [Route("api/accounts")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/accounts")]
     public class AccountController(IAppUserService appUserService) : Controller
     {
         private readonly IAppUserService _appUserService = appUserService;
