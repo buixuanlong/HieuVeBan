@@ -4,6 +4,7 @@ using HieuVeBan.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240309064402_InitAnswer")]
+    partial class InitAnswer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,20 +32,11 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("password_hashed");
-
                     b.Property<string>("SecretKey")
+                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)")
                         .HasColumnName("secret_key");
-
-                    b.Property<byte>("Type")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("type")
-                        .HasComment("Type of UserType: 0 Unknown, 1 Internal, 2 External");
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
@@ -57,9 +51,6 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnName("user_name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "UserName" }, "u_idx_app_user_username")
-                        .IsUnique();
 
                     b.ToTable("app_user", "dbo");
                 });
