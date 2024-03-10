@@ -17,6 +17,8 @@ public static class DependencyInjection
         services.AddScoped<IQuestionService, QuestionService>();
         services.AddScoped<IAdministrativeGeographyService, AdministrativeGeographyService>();
         services.AddScoped<IUserObjectService, UserObjectService>();
+        services.AddScoped<IMethodResultService, MethodResultService>();
+        services.AddScoped<IUserInformationService, UserInformationService>();
 
         services.Configure<SecurityOptions>(configuration.GetSection(SecurityOptions.SectionKey));
 

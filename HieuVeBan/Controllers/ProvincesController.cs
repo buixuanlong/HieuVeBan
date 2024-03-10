@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using HieuVeBan.Abstraction.Security;
 using HieuVeBan.Contracts.Services;
-using HieuVeBan.Models.QueryParam;
+using HieuVeBan.Models.Commands.QueryParams;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

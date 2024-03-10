@@ -10,6 +10,8 @@ public class ProvinceMappingProfiles : Profile
     {
         CreateMap<Province, ProvinceSummaryModel>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+        CreateMap<Province, ProvinceModel>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
     }
 }
 

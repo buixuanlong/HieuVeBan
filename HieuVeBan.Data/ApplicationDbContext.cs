@@ -24,5 +24,10 @@ namespace HieuVeBan.Data
         public DbSet<Province> Provinces { get; set; }
         public DbSet<AdministrativeRegion> AdministrativeRegions { get; set; }
         public DbSet<AdministrativeUnit> AdministrativeUnits { get; set; }
+        public DbSet<MBTIFunctionalFactor> MBTIFunctionalFactors { get; set; }
+        public DbSet<MBTIDichotomousPair> MBTIDichotomousPairs { get; set; }
+        public DbSet<MBTIPersonalityGroup> MBTIPersonalityGroups { get; set; }
+        public DbSet<MBTIResult> MBTIResults { get; set; }
+        public DbSet<MBTICelebrity> MBTICelebrities { get; set; }
     }
 }

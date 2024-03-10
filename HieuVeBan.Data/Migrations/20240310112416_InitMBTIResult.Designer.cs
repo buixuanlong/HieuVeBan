@@ -4,6 +4,7 @@ using HieuVeBan.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240310112416_InitMBTIResult")]
+    partial class InitMBTIResult
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,35 +147,6 @@ namespace HieuVeBan.Data.Migrations
                     b.ToTable("app_users", "dbo");
                 });
 
-            modelBuilder.Entity("HieuVeBan.Models.Entities.Color", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
-                        .HasColumnName("code");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("description");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("colors", "dbo");
-                });
-
             modelBuilder.Entity("HieuVeBan.Models.Entities.HollandAnswer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -288,12 +262,6 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("name");
 
-                    b.Property<string>("NameEn")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("name_en");
-
                     b.Property<string>("Symbol")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -304,45 +272,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasIndex("MBTIDichotomousPairId");
 
-                    b.HasIndex("Symbol")
-                        .IsUnique();
-
                     b.ToTable("mbti_functional_factors", "dbo");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIFunctionalFactorNameDetail", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Character")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)")
-                        .HasColumnName("character");
-
-                    b.Property<Guid>("ColorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("color_id");
-
-                    b.Property<Guid>("MBTIFunctionalFactorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("mbti_functional_factor_id");
-
-                    b.Property<int>("SortOrder")
-                        .HasMaxLength(255)
-                        .HasColumnType("int")
-                        .HasColumnName("sort_order");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ColorId");
-
-                    b.HasIndex("MBTIFunctionalFactorId");
-
-                    b.ToTable("mbti_functional_factor_name_details", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIPersonalityGroup", b =>
@@ -354,8 +284,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("description");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -656,25 +585,6 @@ namespace HieuVeBan.Data.Migrations
                     b.Navigation("MBTIDichotomousPair");
                 });
 
-            modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIFunctionalFactorNameDetail", b =>
-                {
-                    b.HasOne("HieuVeBan.Models.Entities.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("HieuVeBan.Models.Entities.MBTIFunctionalFactor", "MBTIFunctionalFactor")
-                        .WithMany("MBTIFunctionalFactorNameDetails")
-                        .HasForeignKey("MBTIFunctionalFactorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Color");
-
-                    b.Navigation("MBTIFunctionalFactor");
-                });
-
             modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIResult", b =>
                 {
                     b.HasOne("HieuVeBan.Models.Entities.MBTIAnswer", "MBTIAnswer")
@@ -747,11 +657,6 @@ namespace HieuVeBan.Data.Migrations
                     b.Navigation("Province");
 
                     b.Navigation("UserObject");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIFunctionalFactor", b =>
-                {
-                    b.Navigation("MBTIFunctionalFactorNameDetails");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.PersonalityAssessmentMethod", b =>

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Data;
+using HieuVeBan.Models.Commands.QueryParams;
 using HieuVeBan.Models.DTOs;
 using HieuVeBan.Models.Entities;
-using HieuVeBan.Models.QueryParam;
 using HieuVeBan.Services.Extensions;
 
 namespace HieuVeBan.Services

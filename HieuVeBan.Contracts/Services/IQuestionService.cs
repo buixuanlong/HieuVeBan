@@ -1,5 +1,5 @@
-﻿using HieuVeBan.Models.DTOs;
-using HieuVeBan.Models.QueryParam;
+﻿using HieuVeBan.Models.Commands.QueryParams;
+using HieuVeBan.Models.DTOs;
 
 namespace HieuVeBan.Contracts.Services
 {

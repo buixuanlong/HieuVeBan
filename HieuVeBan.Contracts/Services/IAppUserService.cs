@@ -1,7 +1,6 @@
-using System.ComponentModel;
 using HieuVeBan.Models.Abstractions;
+using HieuVeBan.Models.Commands.QueryParams;
 using HieuVeBan.Models.DTOs;
-using HieuVeBan.Models.QueryParam;
 
 namespace HieuVeBan.Contracts.Services;
 

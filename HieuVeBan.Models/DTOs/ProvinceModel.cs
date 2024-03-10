@@ -1,6 +1,6 @@
 ﻿namespace HieuVeBan.Models.DTOs
 {
-    public class ProvinceSummaryModel
+    public class ProvinceModel
     {
         public int Id { get; set; }
         public string Code { get; set; } = null!;
