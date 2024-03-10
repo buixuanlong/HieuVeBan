@@ -1,0 +1,8 @@
+﻿INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(1,N'Đông Bắc Bộ',N'Northeast',N'dong_bac_bo',N'northest');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(2,N'Tây Bắc Bộ',N'Northwest',N'tay_bac_bo',N'northwest');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(3,N'Đồng bằng sông Hồng',N'Red River Delta',N'dong_bang_song_hong',N'red_river_delta');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(4,N'Bắc Trung Bộ',N'North Central Coast',N'bac_trung_bo',N'north_central_coast');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(5,N'Duyên hải Nam Trung Bộ',N'South Central Coast',N'duyen_hai_nam_trung_bo',N'south_central_coast');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(6,N'Tây Nguyên',N'Central Highlands',N'tay_nguyen',N'central_highlands');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(7,N'Đông Nam Bộ',N'Southeast',N'dong_nam_bo',N'southeast');
+INSERT INTO administrative_regions(id,name,name_en,code_name,code_name_en) VALUES(8,N'Đồng bằng sông Cửu Long',N'Mekong River Delta',N'dong_bang_song_cuu_long',N'southwest');

@@ -19,5 +19,10 @@ namespace HieuVeBan.Data
         public DbSet<PersonalityAssessmentQuestion> PersonalityAssessmentQuestions { get; set; }
         public DbSet<HollandAnswer> HollandAnswers { get; set; }
         public DbSet<MBTIAnswer> MBTIAnswers { get; set; }
+        public DbSet<UserObject> UserObjects { get; set; }
+        public DbSet<UserInformation> UserInformations { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<AdministrativeRegion> AdministrativeRegions { get; set; }
+        public DbSet<AdministrativeUnit> AdministrativeUnits { get; set; }
     }
 }

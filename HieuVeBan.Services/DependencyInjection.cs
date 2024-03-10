@@ -1,6 +1,5 @@
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Models.Options;
-using HieuVeBan.Services.Users;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -14,6 +13,10 @@ public static class DependencyInjection
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services.AddScoped<IAppUserService, AppUserService>();
+        services.AddScoped<IMethodService, MethodService>();
+        services.AddScoped<IQuestionService, QuestionService>();
+        services.AddScoped<IAdministrativeGeographyService, AdministrativeGeographyService>();
+        services.AddScoped<IUserObjectService, UserObjectService>();
 
         services.Configure<SecurityOptions>(configuration.GetSection(SecurityOptions.SectionKey));
 

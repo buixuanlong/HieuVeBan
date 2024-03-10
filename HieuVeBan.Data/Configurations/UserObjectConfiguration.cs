@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HieuVeBan.Data.Configurations
 {
-    internal class MBTIAnswerConfiguration : BaseEntityConfiguration<MBTIAnswer, Guid>
+    internal class UserObjectConfiguration : BaseEntityConfiguration<UserObject, Guid>
     {
-        public override string TableName => "mbti_answers";
+        public override string TableName => "user_objects";
 
-        public override void Configure(EntityTypeBuilder<MBTIAnswer> builder)
+        public override void Configure(EntityTypeBuilder<UserObject> builder)
         {
             base.Configure(builder);
 
@@ -18,15 +18,16 @@ namespace HieuVeBan.Data.Configurations
 
             builder.Property(x => x.Name)
                 .HasColumnName("name")
+                .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(x => x.PersonalityAssessmentQuestionId)
-                .HasColumnName("personality_assessment_question_id")
+            builder.Property(x => x.Code)
+                .HasColumnName("code")
+                .HasMaxLength(20)
                 .IsRequired();
 
-            builder.HasOne(x => x.PersonalityAssessmentQuestion)
-                .WithMany()
-                .HasForeignKey(x => x.PersonalityAssessmentQuestionId)
+            builder.Property(x => x.SortOrder)
+                .HasColumnName("sort_order")
                 .IsRequired();
         }
     }

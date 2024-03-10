@@ -4,6 +4,7 @@ using HieuVeBan.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HieuVeBan.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240310023846_InitUserInfo")]
+    partial class InitUserInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,86 +24,6 @@ namespace HieuVeBan.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.AdministrativeRegion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CodeName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("code_name");
-
-                    b.Property<string>("CodeNameEn")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("code_name_en");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("name");
-
-                    b.Property<string>("NameEn")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("name_en");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("administrative_regions", "dbo");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.AdministrativeUnit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CodeName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("code_name");
-
-                    b.Property<string>("CodeNameEn")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("code_name_en");
-
-                    b.Property<string>("FullName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("full_name");
-
-                    b.Property<string>("FullNameEn")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("full_name_en");
-
-                    b.Property<string>("ShortName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("short_name");
-
-                    b.Property<string>("ShortNameEn")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("short_name_en");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("administrative_units", "dbo");
-                });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.AppUser", b =>
                 {
@@ -141,7 +64,7 @@ namespace HieuVeBan.Data.Migrations
                     b.HasIndex(new[] { "UserName" }, "u_idx_app_user_username")
                         .IsUnique();
 
-                    b.ToTable("app_users", "dbo");
+                    b.ToTable("app_user", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.HollandAnswer", b =>
@@ -165,7 +88,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("holland_answers", "dbo");
+                    b.ToTable("holland_answer", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIAnswer", b =>
@@ -188,7 +111,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasIndex("PersonalityAssessmentQuestionId");
 
-                    b.ToTable("mbti_answers", "dbo");
+                    b.ToTable("mbti_answer", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.PersonalityAssessmentMethod", b =>
@@ -225,7 +148,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("personality_assessment_methods", "dbo");
+                    b.ToTable("personality_assessment_method", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.PersonalityAssessmentQuestion", b =>
@@ -252,7 +175,7 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasIndex("PersonalityAssessmentMethodId");
 
-                    b.ToTable("personality_assessment_questions", "dbo");
+                    b.ToTable("personality_assessment_question", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.Province", b =>
@@ -264,59 +187,21 @@ namespace HieuVeBan.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AdministrativeRegionId")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasColumnName("administrative_region_id");
-
-                    b.Property<int?>("AdministrativeUnitId")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasColumnName("administrative_unit_id");
-
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("code");
-
-                    b.Property<string>("CodeName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("code_name");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("full_name");
-
-                    b.Property<string>("FullNameEn")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("full_name_en");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasColumnName("name");
-
-                    b.Property<string>("NameEn")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("name_en");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdministrativeRegionId");
-
-                    b.HasIndex("AdministrativeUnitId");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("provinces", "dbo");
+                    b.ToTable("province", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.UserInformation", b =>
@@ -348,6 +233,7 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("phone");
@@ -368,14 +254,11 @@ namespace HieuVeBan.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
-
                     b.HasIndex("ProvinceId");
 
                     b.HasIndex("UserObjectId");
 
-                    b.ToTable("user_informations", "dbo");
+                    b.ToTable("user_information", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.UserObject", b =>
@@ -397,13 +280,9 @@ namespace HieuVeBan.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("name");
 
-                    b.Property<int>("SortOrder")
-                        .HasColumnType("int")
-                        .HasColumnName("sort_order");
-
                     b.HasKey("Id");
 
-                    b.ToTable("user_objects", "dbo");
+                    b.ToTable("user_object", "dbo");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.MBTIAnswer", b =>
@@ -426,23 +305,6 @@ namespace HieuVeBan.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("PersonalityAssessmentMethod");
-                });
-
-            modelBuilder.Entity("HieuVeBan.Models.Entities.Province", b =>
-                {
-                    b.HasOne("HieuVeBan.Models.Entities.AdministrativeRegion", "AdministrativeRegion")
-                        .WithMany()
-                        .HasForeignKey("AdministrativeRegionId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("HieuVeBan.Models.Entities.AdministrativeUnit", "AdministrativeUnit")
-                        .WithMany()
-                        .HasForeignKey("AdministrativeUnitId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("AdministrativeRegion");
-
-                    b.Navigation("AdministrativeUnit");
                 });
 
             modelBuilder.Entity("HieuVeBan.Models.Entities.UserInformation", b =>

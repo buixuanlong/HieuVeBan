@@ -1,0 +1,10 @@
+﻿INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(1,N'Thành phố trực thuộc trung ương',N'Municipality',N'Thành phố',N'City',N'thanh_pho_truc_thuoc_trung_uong',N'municipality');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(2,N'Tỉnh',N'Province',N'Tỉnh',N'Province',N'tinh',N'province');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(3,N'Thành phố thuộc thành phố trực thuộc trung ương',N'Municipal city',N'Thành phố',N'City',N'thanh_pho_thuoc_thanh_pho_truc_thuoc_trung_uong',N'municipal_city');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(4,N'Thành phố thuộc tỉnh',N'Provincial city',N'Thành phố',N'City',N'thanh_pho_thuoc_tinh',N'provincial_city');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(5,N'Quận',N'Urban district',N'Quận',N'District',N'quan',N'urban_district');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(6,N'Thị xã',N'District-level town',N'Thị xã',N'Town',N'thi_xa',N'district_level_town');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(7,N'Huyện',N'District',N'Huyện',N'District',N'huyen',N'district');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(8,N'Phường',N'Ward',N'Phường',N'Ward',N'phuong',N'ward');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(9,N'Thị trấn',N'Commune-level town',N'Thị trấn',N'Township',N'thi_tran',N'commune_level_town');
+INSERT INTO administrative_units(id,full_name,full_name_en,short_name,short_name_en,code_name,code_name_en) VALUES(10,N'Xã',N'Commune',N'Xã',N'Commune',N'xa',N'commune');

@@ -7,7 +7,7 @@ namespace HieuVeBan.Data.Configurations
 {
     internal class PersonalityAssessmentQuestionConfiguration : BaseEntityConfiguration<PersonalityAssessmentQuestion, Guid>
     {
-        public override string TableName => "personality_assessment_question";
+        public override string TableName => "personality_assessment_questions";
 
         public override void Configure(EntityTypeBuilder<PersonalityAssessmentQuestion> builder)
         {

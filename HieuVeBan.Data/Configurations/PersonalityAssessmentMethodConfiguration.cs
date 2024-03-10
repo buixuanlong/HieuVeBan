@@ -1,5 +1,7 @@
 ﻿using HieuVeBan.Abstraction.EFCore.Configuration;
+using HieuVeBan.Data.Helpers;
 using HieuVeBan.Models.Entities;
+using HieuVeBan.Models.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -7,7 +9,7 @@ namespace HieuVeBan.Data.Configurations
 {
     internal class PersonalityAssessmentMethodConfiguration : BaseEntityConfiguration<PersonalityAssessmentMethod, Guid>
     {
-        public override string TableName => "personality_assessment_method";
+        public override string TableName => "personality_assessment_methods";
 
         public override void Configure(EntityTypeBuilder<PersonalityAssessmentMethod> builder)
         {
@@ -31,6 +33,11 @@ namespace HieuVeBan.Data.Configurations
             builder.Property(x => x.Note)
                 .HasColumnName("note")
                 .IsRequired();
+
+            builder.Property(x => x.Type)
+                .HasColumnName("type")
+                .IsRequired()
+                .HasComment(EnumHelpers.GetDescriptions<MethodType>());
         }
     }
 }

@@ -7,7 +7,7 @@ namespace HieuVeBan.Data.Configurations
 {
     internal class HollandAnswerConfiguration : BaseEntityConfiguration<HollandAnswer, Guid>
     {
-        public override string TableName => "holland_answer";
+        public override string TableName => "holland_answers";
 
         public override void Configure(EntityTypeBuilder<HollandAnswer> builder)
         {

@@ -9,7 +9,7 @@ namespace HieuVeBan.Data.Configurations
 {
     internal class AppUserConfiguration : BaseEntityConfiguration<AppUser, Guid>
     {
-        public override string TableName => "app_user";
+        public override string TableName => "app_users";
 
         public override void Configure(EntityTypeBuilder<AppUser> builder)
         {

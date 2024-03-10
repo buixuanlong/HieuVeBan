@@ -1,4 +1,5 @@
 ﻿using HieuVeBan.Models.Abstractions.Entities;
+using HieuVeBan.Models.Enum;
 
 namespace HieuVeBan.Models.Entities
 {
@@ -8,6 +9,7 @@ namespace HieuVeBan.Models.Entities
         public string Author { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string Note { get; set; } = null!;
+        public MethodType Type { get; set; }
 
         public virtual ICollection<PersonalityAssessmentQuestion> PersonalityAssessmentQuestions { get; set; } = new List<PersonalityAssessmentQuestion>();
     }

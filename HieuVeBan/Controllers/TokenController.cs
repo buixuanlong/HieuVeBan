@@ -17,6 +17,7 @@ namespace HieuVeBan.Controllers
         private readonly ITokenService _tokenService = tokenService;
 
         [AllowAnonymous]
+        [HttpPost]
         public async Task<IActionResult> RequestToken(
             [FromForm] LoginModel model,
             CancellationToken cancellationToken)
