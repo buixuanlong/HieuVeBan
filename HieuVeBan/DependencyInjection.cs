@@ -3,6 +3,7 @@ using HieuVeBan.Abstraction.Security;
 using HieuVeBan.Configurations;
 using HieuVeBan.Data;
 using HieuVeBan.Helpers;
+using HieuVeBan.Middlewares;
 using HieuVeBan.Models.Options;
 using HieuVeBan.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -27,6 +28,7 @@ public static class DependencyInjection
 
         services.AddServices(configuration);
         services.AddApplicationDbContext(configuration);
+        services.AddMiddlewares();
         services.AddAppSession();
 
         return services;
@@ -39,6 +41,11 @@ public static class DependencyInjection
             options.Cookie.IsEssential = true;
             options.IdleTimeout = TimeSpan.FromDays(3);
         });
+    }
+
+    private static void AddMiddlewares(this IServiceCollection services)
+    {
+        services.AddScoped<GlobalExceptionMiddleware>();
     }
 
     private static void AddJwtService(this IServiceCollection services, IConfiguration configuration)
@@ -74,11 +81,9 @@ public static class DependencyInjection
                 };
             });
 
-        services.AddAuthentication(sharedOptions =>
-        {
-            sharedOptions.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        }).AddCookie(options =>
+
+        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
         {
             options.ExpireTimeSpan = TimeSpan.FromDays(3);
             options.LoginPath = "/login";
