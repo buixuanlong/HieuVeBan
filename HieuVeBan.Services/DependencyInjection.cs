@@ -19,6 +19,7 @@ public static class DependencyInjection
         services.AddScoped<IUserObjectService, UserObjectService>();
         services.AddScoped<IMethodResultService, MethodResultService>();
         services.AddScoped<IUserInformationService, UserInformationService>();
+        services.AddScoped<IAdminService, AdminService>();
 
         services.Configure<SecurityOptions>(configuration.GetSection(SecurityOptions.SectionKey));
 

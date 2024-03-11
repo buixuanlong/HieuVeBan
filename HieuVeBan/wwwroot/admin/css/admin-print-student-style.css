@@ -1,0 +1,62 @@
+﻿button.btn-cancel-print{
+    margin-right:30px;
+    float:right;
+}
+
+section.print-student-box {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #fff;
+    z-index: 1050;
+}
+
+section.print-student-box .panel-title{
+    margin-top:30px;
+    text-transform:uppercase;
+    text-align:center;
+}
+
+p.student-print-info{
+    font-size:20px;
+    font-weight:bold;
+}
+
+p.student-print-info>span{
+    font-weight:normal;
+    font-style:italic;
+}
+
+label.record-check-list{
+    font-size:18px;
+}
+
+label.record-check-list input[type=checkbox], label.record-check-list input[type=radio] {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    transform: scale(1.5);
+    padding: 10px;
+    margin-right:10px;
+}
+
+ul.display-flexbox {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-wrap: wrap !important;
+    flex-wrap: wrap !important;
+}
+
+p.major-tuition {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+p.major-tuition span{
+    font-weight: normal;
+}

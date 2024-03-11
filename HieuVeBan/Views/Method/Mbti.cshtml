@@ -1,0 +1,152 @@
+﻿@using HieuVeBan.Models.Entities.OldEntities
+@using HieuVeBan.Models.OldModel
+@model IEnumerable<HieuVeBan.Models.Entities.OldEntities.Question>
+@{
+    ViewData["Title"] = "Phương pháp MBTI";
+    Pager pager = new Pager();
+    List<Answer_MBTI> mbtis = ViewBag.MBTI;
+    int pageNo = 0;
+    int dem = 1;
+    string symbol = "A";
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<div class="container">
+    <div class="logo">
+        <div class="content">
+            @if (pager.TotalPages > 0)
+            {
+                @foreach (var question in Model)
+                {
+                    <div class="question-info">
+                        <div class="question" data-method-type="@question.SurveyMethod_Id" data-question-uid="@question.Id">
+                            <div class="question__number">
+                                <div class="number">@(question.Id - 60)</div>
+                                <i class="fa-solid fa-angles-right icon-right"></i>
+                            </div>
+                            <div class="question__content">
+                                @Html.DisplayFor(modelItem => question.Content)
+                            </div>
+                        </div>
+                        @foreach (var answer in mbtis)
+                        {
+                            if (answer.Question_Id == question.Id)
+                            {
+                                @if (dem == 1)
+                                {
+                                    symbol = "A";
+                                }
+                                @if (dem == 2)
+                                {
+                                    symbol = "B";
+                                }
+                                @if (dem == 3)
+                                {
+                                    symbol = "C";
+                                }
+                                <div class="answer" data-answer-uid="@answer.Id">
+                                    <div class="answer__circle">
+                                        <div class="answer__circle--symbol">@(symbol)</div>
+                                    </div>
+                                    <div class="answer__content">@answer.Content</div>
+                                </div>
+                                dem++;
+                            }
+                        }
+                    </div>
+                    dem = 1;
+                }
+            }
+        </div>
+        <div class="paginate">
+            @if (pager.CurrentPage == pager.TotalPages)
+            {
+                <div class="btn-m1 ajax-get-list-answer" style="user-select:none; margin-top: 20px;">
+                    <div type="button" class="btn btn-mobile">
+                        Hoàn thành khảo sát
+                        <i class="fa-solid fa-angles-right icon-right"></i>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="paginate__icon" style="width: 80px;">
+                    <a style="text-decoration: none; cursor: default" class="paginate__icon--item paginate__icon--disabled">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </a>
+                    <a id="right" style="text-decoration: none; color: #333; cursor: pointer;" class="paginate__icon--disabled paginate__icon--item">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var totalQuestion = @(Model.Count());
+        var totalAnswerChecked = 0;
+        var listAnswers_Mbti = {};
+        if (!!$.cookie('answers_mbti')) {
+            listAnswers_Mbti = JSON.parse($.cookie("answers_mbti"));
+        }
+        var type_method = $('.question').attr('data-method-type');
+        $('#right').css("color", "rgb(192, 191, 191)");
+        $('#right').on('click', function () {
+            if (totalQuestion != totalAnswerChecked) {
+                alert('Bạn còn ' + (totalQuestion - totalAnswerChecked) + ' câu chưa trả lời!')
+            }
+        });
+        $('.answer').on('click', function () {
+            $(this).addClass("answer--active").siblings().removeClass("answer--active");
+            var questionId = $(this).parent().find('.question').attr('data-question-uid');
+            totalAnswerChecked = $('.question-info .answer--active').length;
+            if (totalQuestion == totalAnswerChecked) {
+                $('#right').attr('href', '/phuong-phap-dinh-huong-nghe-nghiep/mbti?page=@(pager.CurrentPage + 1)');
+                $('#right').css("color", "#333");
+            }
+            else {
+                $('#right').removeAttr('href');
+                $('#right').css("color", "rgb(192, 191, 191)");
+            }
+            listAnswers_Mbti[questionId] = +$(this).attr('data-answer-uid');
+            $.cookie("answers_mbti", JSON.stringify(listAnswers_Mbti), { path: '/' });
+        });
+        $('.ajax-get-list-answer').on('click', function () {
+            if (totalQuestion != totalAnswerChecked) {
+                alert('Bạn còn ' + (totalQuestion - totalAnswerChecked) + ' câu chưa trả lời!')
+            }
+            else {
+                var type = $('.question').attr('data-method-type');
+                $.ajax({
+                    type: 'POST',
+                    url: '/Method/Result',
+                    data: {
+                        "data": JSON.stringify(listAnswers_Mbti),
+                        "type": 2
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        $.removeCookie('answers_mbti', { path: '/' });
+                        listAnswers_Mbti = {};
+                        $.cookie('result_mbti', response.result, { path: '/' });
+                        $.cookie('check-method', 2, { path: '/' });
+                        if ($.cookie('check-information') == 'true') {
+                            location.href = '/ket-qua-mbti/';
+                        }
+                        else {
+                            location.href = '/cap-nhat-thong-tin/';
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}
+
+

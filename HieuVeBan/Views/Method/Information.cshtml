@@ -1,0 +1,355 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+
+<head>
+    <title>Cập nhật thông tin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://ueh.edu.vn/images/logo_ueh.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/css/custom.css?v=10" media="screen">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+            /* Hide scrollbars */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <h4 class="text-center" style="padding:10px;color:#005f69">CẬP NHẬT THÔNG TIN NGƯỜI DÙNG</h4>
+            <form action="" method="post">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="hoten">Họ tên *</label>
+                            <input type="text" class="form-control" id="hoten" placeholder="Nhập vào họ tên" name="hoten" value="" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ngaysinh">Ngày sinh *</label>
+                            <input class="form-control" data-inputmask="'alias': 'date'" id="ngaysinh" placeholder="Nhập vào ngày sinh (dd/mm/yyyy)" name="ngaysinh" value="$ngaysinh" required>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="email">Email *</label>
+                            <input type="email" class="form-control" id="email" placeholder="Nhập vào địa chỉ email" name="email" value="" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sdt">Điện thoại</label>
+                            <input type="number" class="form-control" id="sdt" placeholder="Nhập vào điện thoại" name="sdt" value="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="thpt">Trường *</label>
+                            <input type="text" class="form-control" id="thpt" placeholder="Nhập vào tên trường" name="thpt" value="" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="tinh">Tỉnh/Thành phố *</label>
+                            <select class="form-control selectpicker" id="tinh" name="tinh" required data-live-search="true">
+                                <option value="">--CHỌN TỈNH/THÀNH PHỐ--</option>
+                                <option value='An Giang'>An Giang</option>
+                                <option value='Bà Rịa – Vũng Tàu'>Bà Rịa – Vũng Tàu</option>
+                                <option value='Bắc Giang'>Bắc Giang</option>
+                                <option value='Bắc Kạn'>Bắc Kạn</option>
+                                <option value='Bạc Liêu'>Bạc Liêu</option>
+                                <option value='Bắc Ninh'>Bắc Ninh</option>
+                                <option value='Bến Tre'>Bến Tre</option>
+                                <option value='Bình Định'>Bình Định</option>
+                                <option value='Bình Dương'>Bình Dương</option>
+                                <option value='Bình Phước'>Bình Phước</option>
+                                <option value='Bình Thuận'>Bình Thuận</option>
+                                <option value='Cà Mau'>Cà Mau</option>
+                                <option value='Cần Thơ'>Cần Thơ</option>
+                                <option value='Cao Bằng'>Cao Bằng</option>
+                                <option value='Đà Nẵng'>Đà Nẵng</option>
+                                <option value='Đắk Lắk'>Đắk Lắk</option>
+                                <option value='Đắk Nông'>Đắk Nông</option>
+                                <option value='Điện Biên'>Điện Biên</option>
+                                <option value='Đồng Nai'>Đồng Nai</option>
+                                <option value='Đồng Tháp'>Đồng Tháp</option>
+                                <option value='Gia Lai'>Gia Lai</option>
+                                <option value='Hà Giang'>Hà Giang</option>
+                                <option value='Hà Nam'>Hà Nam</option>
+                                <option value='Hà Nội'>Hà Nội</option>
+                                <option value='Hà Tĩnh'>Hà Tĩnh</option>
+                                <option value='Hải Dương'>Hải Dương</option>
+                                <option value='Hải Phòng'>Hải Phòng</option>
+                                <option value='Hậu Giang'>Hậu Giang</option>
+                                <option value='Hòa Bình'>Hòa Bình</option>
+                                <option value='Hưng Yên'>Hưng Yên</option>
+                                <option value='Khánh Hòa'>Khánh Hòa</option>
+                                <option value='Kiên Giang'>Kiên Giang</option>
+                                <option value='Kon Tum'>Kon Tum</option>
+                                <option value='Lai Châu'>Lai Châu</option>
+                                <option value='Lâm Đồng'>Lâm Đồng</option>
+                                <option value='Lạng Sơn'>Lạng Sơn</option>
+                                <option value='Lào Cai'>Lào Cai</option>
+                                <option value='Long An'>Long An</option>
+                                <option value='Nam Định'>Nam Định</option>
+                                <option value='Nghệ An'>Nghệ An</option>
+                                <option value='Ninh Bình'>Ninh Bình</option>
+                                <option value='Ninh Thuận'>Ninh Thuận</option>
+                                <option value='Phú Thọ'>Phú Thọ</option>
+                                <option value='Phú Yên'>Phú Yên</option>
+                                <option value='Quảng Bình'>Quảng Bình</option>
+                                <option value='Quảng Nam'>Quảng Nam</option>
+                                <option value='Quảng Ngãi'>Quảng Ngãi</option>
+                                <option value='Quảng Ninh'>Quảng Ninh</option>
+                                <option value='Quảng Trị'>Quảng Trị</option>
+                                <option value='Sóc Trăng'>Sóc Trăng</option>
+                                <option value='Sơn La'>Sơn La</option>
+                                <option value='Tây Ninh'>Tây Ninh</option>
+                                <option value='Thái Bình'>Thái Bình</option>
+                                <option value='Thái Nguyên'>Thái Nguyên</option>
+                                <option value='Thanh Hóa'>Thanh Hóa</option>
+                                <option value='Thừa Thiên Huế'>Thừa Thiên Huế</option>
+                                <option value='Tiền Giang'>Tiền Giang</option>
+                                <option value='TP Hồ Chí Minh'>TP Hồ Chí Minh</option>
+                                <option value='Trà Vinh'>Trà Vinh</option>
+                                <option value='Tuyên Quang'>Tuyên Quang</option>
+                                <option value='Vĩnh Long'>Vĩnh Long</option>
+                                <option value='Vĩnh Phúc'>Vĩnh Phúc</option>
+                                <option value='Yên Bái'>Yên Bái</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div style="padding-right:15px;padding-top: 13px;">Thuộc đối tượng: </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radio1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="hs" checked>Học sinh
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radio1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="ph">Phụ huynh
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radio1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="gv">Giáo viên
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radio2">
+                                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="k">Khác
+                                </label>
+                            </div>
+                            <div class="col-md-12" style="padding-left: 0;">
+                                <button type="submit" class="btn btn-primary" style="border: none;background-color: #005f69;margin-top:30px;margin-bottom:20px">CẬP NHẬT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer-global">
+        <div class="column-3 none-mobile">
+            <div>
+                <ul style="list-style-type: none; margin-left: 10px;" class="footer-first-ul">
+                    <li style="margin-bottom: 5px;">
+                        <a href="/">
+                            <img class="footer-logo" src="https://ueh.edu.vn/images/logo-footer.png" alt="Trường Đại học Kinh tế TP. Hồ Chí Minh">
+                        </a>
+                    </li>
+                    <li class="footer-title">
+                        59C Nguyễn Đình Chiểu, Quận 3, TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        Email: info@ueh.edu.vn
+                    </li>
+                    <li class="footer-title">
+                        © @(DateTime.Now.Year) Trường Đại học Kinh tế TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        <a href="http://cntt.ueh.edu.vn" target="_blank">
+                            Phát triển bởi Phòng Công
+                            nghệ thông tin
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer-icon" style="padding-left: 40px; margin-top: 20px;">
+                    <a title="Facebook" data-ga-label="Facebook" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/facebook" target="_blank">
+                        <i class="icon-footer fa-brands fa-facebook-square"></i>
+                    </a>
+                    <a title="YouTube" data-ga-label="YouTube" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/youtube" target="_blank">
+                        <i class="icon-footer fa-brands fa-youtube"></i>
+                    </a>
+                    <a title="Spotify" data-ga-label="Spotify" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/spotify" target="_blank">
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                    <a title="Linkedin" data-ga-label="Linkedin" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/linkedin" target="_blank">
+                        <i class="icon-footer fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a title="Instagram" data-ga-label="Instagram" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/instagram" target="_blank">
+                        <i class="icon-footer fa-brands fa-instagram"></i>
+                    </a>
+                    <a title="Tiktok" data-ga-label="Tiktok" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/tiktok" target="_blank">
+                        <i class="icon-footer fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12" style="padding-top: 55px;">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li class="footer-title">
+                        <a href="https://tuyensinh.ueh.edu.vn/">UEH Tuyển sinh</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://future.ueh.edu.vn/" target="_blank">UEH Future</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12" style="padding-top: 55px;">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li class="footer-title">
+                        <a href="https://ueh.edu.vn/" target="_blank">UEH Portal</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://virtualtour.ueh.edu.vn/" target="_blank">UEH Virtual Tour</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12" style="padding-top: 55px;">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li class="footer-title">
+                        <a href="https://global.ueh.edu.vn/" target="_blank">UEH Global</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://future.ueh.edu.vn/giving/" target="_blank">UEH Giving</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12 yes-mobile">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li style="margin-bottom: 5px;">
+                        <a href="/">
+                            <img class="footer-logo" src="https://ueh.edu.vn/images/logo-footer.png" alt="Trường Đại học Kinh tế TP. Hồ Chí Minh">
+                        </a>
+                    </li>
+                    <li class="footer-title">
+                        59C Nguyễn Đình Chiểu, Quận 3, TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        Email: info@ueh.edu.vn
+                    </li>
+                    <li class="footer-title">
+                        © @(DateTime.Now.Year) Trường Đại học Kinh tế TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        <a href="http://cntt.ueh.edu.vn" target="_blank">
+                            Phát triển bởi Phòng Công
+                            nghệ thông tin
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer-icon" style="padding-left: 40px; margin-top: 20px;">
+                    <a title="Facebook" data-ga-label="Facebook" style="font-size:25px !important;text-decoration:none; color: #fff;" href="https://go.ueh.edu.vn/facebook" target="_blank">
+                        <i class="fa-brands fa-facebook-square"></i>
+                    </a>
+                    <a title="YouTube" data-ga-label="YouTube" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/youtube" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a title="Spotify" data-ga-label="Spotify" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/spotify" target="_blank">
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                    <a title="Linkedin" data-ga-label="Linkedin" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/linkedin" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a title="Instagram" data-ga-label="Instagram" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/instagram" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a title="Tiktok" data-ga-label="Tiktok" style="font-size:25px !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/tiktok" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $(":input").inputmask();
+            $("#phone").inputmask({
+                mask: '999 999 9999',
+                placeholder: ' ',
+                showMaskOnHover: false,
+                showMaskOnFocus: false,
+                onBeforePaste: function (pastedValue, opts) {
+                    var processedValue = pastedValue;
+
+                    //do something with it
+
+                    return processedValue;
+                }
+            });
+            $("form").submit(function (e) {
+                e.preventDefault();
+                var hoten = document.getElementById('hoten').value;
+                var ngaysinh = document.getElementById('ngaysinh').value;
+                var email = document.getElementById('email').value;
+                var sdt = document.getElementById('sdt').value;
+                var thpt = document.getElementById('thpt').value;
+                var tinh = $('#tinh').children("option:selected").val();
+                var type = $('.form-check-label').children('input:checked').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Method/SaveInformation',
+                    data: {
+                        "hoten": hoten,
+                        "ngaysinh": ngaysinh,
+                        "email": email,
+                        "sdt": sdt,
+                        "thpt": thpt,
+                        "tinh": tinh,
+                        "type": type
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.result) {
+                            $.cookie("check-information", true, { path: '/' });
+                            if ($.cookie('check-method') == 1) {
+                                location.href = '/ket-qua-holland/';
+                            }
+                            else {
+                                location.href = '/ket-qua-mbti/';
+                            }
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXXZ9BTT9S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PXXZ9BTT9S');
+    </script>
+</body>
+
+</html>

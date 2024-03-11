@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Danh sách tài khoản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main id="table_content" class="app-content">
+    @await Component.InvokeAsync("AppTitle")
+    <section class="content" style="margin-bottom:25px;">
+        <h4>DANH SÁCH TÀI KHOẢN</h4>
+        <ul class="row">
+            <li style="margin-right: 10px;" class="col-12">
+                <button id="btn_add_new_account" class="btn btn-primary">Thêm tài khoản mới</button>
+            </li>
+        </ul>
+        <table id="account_table" class="table table-striped table-bordered" cellspacing="0" style="width:100%;">
+            <thead>
+                <tr class="table-header">
+                    <th style="width:50px;">Uid</th>
+                    <th>Mã quản lý</th>
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Đơn Vị</th>
+                    <th>Role</th>
+                    <th style="width:75px;"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <partial name="_FooterPartial" />
+</main>
+<section class="modal fade" id="add_new_account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="add_new_account_fr" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add_new_title">Thêm tài khoản mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="uid" hidden>
+                    <div class="form-group">
+                        <label>Mã quản lý<span class="important-fill">*</span></label>
+                        <input type="text" class="form-control" placeholder="Nhập mã quản lý" id="maquanly" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Họ và tên<span class="important-fill">*</span></label>
+                        <input type="text" class="form-control" placeholder="Nhập họ tên" id="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email UEH<span class="important-fill">*</span></label>
+                        <input type="email" class="form-control" placeholder="Nhập email UEH" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Đơn vị<span class="important-fill">*</span></label>
+                        <input type="text" class="form-control" placeholder="Nhập đơn vị" id="donvi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role <span class="important-fill">*</span></label>
+                        <select id="role" class="form-control form-control-xs selectpicker" name="" data-live-search="true" data-width="100%">
+                            <option value="admin">Admin </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button id="btn_add_update" type="submit" class="btn btn-primary">Thêm mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script src="~/admin/js/module.list-accounts.js" type="text/javascript" asp-append-version="true"></script>
+}
+
+
+

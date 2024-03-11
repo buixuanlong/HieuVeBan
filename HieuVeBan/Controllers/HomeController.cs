@@ -18,6 +18,12 @@ namespace HieuVeBan.Controllers
             return View();
         }
 
+        [Route("/phuong-phap-dinh-huong-nghe-nghiep/")]
+        public IActionResult ChooseMethod()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

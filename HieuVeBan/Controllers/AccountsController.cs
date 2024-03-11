@@ -11,7 +11,7 @@ namespace HieuVeBan.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/accounts")]
-    public class AccountController(IAppUserService appUserService) : Controller
+    public class AccountsController(IAppUserService appUserService) : Controller
     {
         private readonly IAppUserService _appUserService = appUserService;
 

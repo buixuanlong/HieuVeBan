@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hiểu về bạn</title>
+    <link rel="stylesheet" href="~/admin/libs/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/admin/libs/datatable/css/dataTables.bootstrap4.min.css" />
+    <link media="screen" rel="stylesheet" href="~/admin/libs/bootstrap-select/css/bootstrap-select.min.css" />
+    <link media="screen" rel="stylesheet" href="~/admin/dist/sweetalert/sweetalert2.min.css" />
+    <link media="screen" rel="stylesheet" href="~/admin/css/spinner-style.css" />
+    <link rel="stylesheet" href="~/admin/libs/datatable-responsive/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="~/admin/css/main.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/admin/css/admin-style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/admin/css/admin-print-student-style.css" asp-append-version="true" />
+    <link rel="shortcut icon" href="~/assets/img/logo_ueh_title.png" />
+</head>
+<body class="app sidebar-mini rtl pace-done">
+    <section id="spinner_layout" class="spinner-layout hidden">
+        <div class="spinner-box">
+            <img src="~/admin/images/spinner.gif">
+            <h2 id="progress_status">Đang xử lý...</h2>
+        </div>
+    </section>
+    <!-- Navbar-->
+    <header class="app-header">
+        <a class="app-header__logo" href="/admin"><img src="~/assets/img/logo-footer.png" width="50" /></a>
+        <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <!-- User Menu-->
+            <li class="dropdown">
+                <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                    <li id="btn_logout"><a class="dropdown-item" href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out fa-lg"></i> Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    @await Component.InvokeAsync("MenuLeft")
+    @RenderBody()
+    @Html.AntiForgeryToken()
+
+    <!-- Essential javascripts for application to work-->
+    <script type="text/javascript" src="~/admin/libs/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/admin/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/admin/dist/sweetalert/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="~/admin/dist/base/dialog/default.js"></script>
+    <script type="text/javascript" src="~/admin/libs/select2/js/select2.js"></script>
+    <script src="~/admin/js/main.js" asp-append-version="true"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="~/admin/dist/pace.min.js"></script>
+    <script src="~/admin/libs/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin/libs/datatable/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/admin/libs/datatable-responsive/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="~/admin/libs/bootstrap-select/js/bootstrap-select.min.js"></script>
+
+    <script src="~/admin/libs/moment/moment.min.js"></script>
+    <script src="~/admin/libs/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+        $('.app-menu__item').removeClass('active');
+        $('.app-menu__item').each(function (el) {
+            if (location.pathname.indexOf($(this).attr('href')) >= 0) {
+                $(this).addClass('active');
+            }
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

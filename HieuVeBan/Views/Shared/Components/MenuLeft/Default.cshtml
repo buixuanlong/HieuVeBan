@@ -1,0 +1,20 @@
+﻿@using HieuVeBan.Models;
+@using HieuVeBan.Models.OldModel
+<aside class="app-sidebar">
+    <div class="app-sidebar__user">
+        <div>
+            <p class="app-sidebar__user-designation" style="color:#fff;font-weight:600;white-space: pre-wrap;">@ViewData["fullname"]</p>
+        </div>
+    </div>
+    <ul class="app-menu">
+        @{
+            if (ViewData["lstMenu"] != null)
+            {
+                foreach (Menu item in ViewBag.lstMenu)
+                {
+                    <li><a class="app-menu__item" href="@item.Url"><i class="app-menu__icon @item.Icon"></i><span class="app-menu__label">@item.MenuName</span></a></li>
+                }
+            }
+        }
+    </ul>
+</aside>

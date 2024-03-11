@@ -1,0 +1,230 @@
+﻿@using HieuVeBan.Models.OldModel
+@using HieuVeBan.ViewModels
+@model IEnumerable<HieuVeBan.Models.Entities.OldEntities.Question>
+@{
+    ViewData["Title"] = "Phương pháp Holland";
+    Pager pager = new Pager();
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<div class="container">
+    <style>
+        .explain {
+            position: relative;
+            width: 50%;
+            height: auto;
+            display: block;
+            font-size: 1.6rem;
+            color: #333;
+            padding: 10px;
+            box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+            border-radius: 5px;
+            line-height: 20px;
+            margin-top: 20px;
+            max-width: 423px;
+        }
+
+        .content {
+            margin-top: 40px;
+            padding-right: 36px;
+        }
+    </style>
+    <div class="logo">
+        <div class="explain">
+            <center style="color: rgb(242, 111, 51); font-size: 2rem; font-weight: 500;">Chú thích</center> <br />
+            <div>
+                <span style="color: rgb(242, 111, 51);">
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                : Chưa bao giờ đúng
+            </div>
+            <div>
+                <span style="color: rgb(242, 111, 51);">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                : Chỉ đúng trong một vài trường hợp
+            </div>
+            <div>
+                <span style="color: rgb(242, 111, 51);">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                : Đúng một nửa
+            </div>
+            <div>
+                <span style="color: rgb(242, 111, 51);">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <i class="fa-solid fa-star"></i>
+                : Đúng hầu hết trong mọi trường hợp
+            </div>
+            <div>
+                <span style="color: rgb(242, 111, 51);">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                : Hoàn toàn đúng
+            </div>
+        </div>
+        <div class="content">
+            @if (pager.TotalPages > 0)
+            {
+                @foreach (var question in Model)
+                {
+                    <div class="question-info">
+                        <div class="question" data-method-type="@question.SurveyMethod_Id" data-question-uid="@question.Id">
+                            <div class="question__number">
+                                <div class="number">@question.Id</div>
+                                <i class="fa-solid fa-angles-right icon-right"></i>
+                            </div>
+                            <div class="question__content">
+                                @Html.DisplayFor(modelItem => question.Content)
+                            </div>
+                        </div>
+                        <div class="star-group">
+                            <div class="star" data-answer-uid="1">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="star" data-answer-uid="2">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="star" data-answer-uid="3">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="star" data-answer-uid="4">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="star" data-answer-uid="5">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="paginate">
+            @if (pager.CurrentPage == pager.TotalPages)
+            {
+                <div class="btn-m1 ajax-get-list-answer" style="user-select:none; margin-top: 20px;">
+                    <div type="button" class="btn btn-mobile">
+                        Hoàn thành khảo sát
+                        <i class="fa-solid fa-angles-right icon-right"></i>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="paginate__icon" style="width: 80px;">
+                    <a style="text-decoration: none; cursor: default" class="paginate__icon--item paginate__icon--disabled">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </a>
+                    <a id="right" style="text-decoration: none; color: #333; cursor: pointer;" class="paginate__icon--disabled paginate__icon--item">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var totalQuestion = @(Model.Count());
+        var totalAnswerChecked = 0;
+        var listAnswers_Holland = {};
+        var listAnswers_Mbti = {};
+        if (!!$.cookie('answers_holland')) {
+            listAnswers_Holland = JSON.parse($.cookie("answers_holland"));
+        }
+        var type_method = $('.question').attr('data-method-type');
+        if (type_method == 2) {
+            $('.content').css("padding-right", "36px");
+            $('.explain').css("display", "none");
+        }
+        $('#right').css("color", "rgb(192, 191, 191)");
+        $('.star').hover(
+            function () {
+                $(this).css('color', 'rgb(242, 111, 51)').prevAll().css('color', 'rgb(242, 111, 51)');
+            },
+            function () {
+                $(this).parent().find('.star').css('color', '#333');
+                $(this).parent().find('.star-checked').css('color', 'rgb(242, 111, 51)').prevAll().css('color', 'rgb(242, 111, 51)');
+            }
+        );
+        $('.star').on('click', function () {
+            $(this).css('color', 'rgb(242, 111, 51)').prevAll().css('color', 'rgb(242, 111, 51)');
+            $(this).nextAll().css('color', '#333');
+            $(this).addClass('star-checked').siblings().removeClass('star-checked');
+            var questionId = $(this).parent().parent().find('.question').attr('data-question-uid');
+            totalAnswerChecked = $('.question-info .star-checked').length;
+            if (totalQuestion == totalAnswerChecked) {
+                $('#right').attr('href', '/phuong-phap-dinh-huong-nghe-nghiep/holland?page=@(pager.CurrentPage + 1)');
+                $('#right').css("color", "#333");
+            }
+            else {
+                $('#right').removeAttr('href');
+                $('#right').css("color", "rgb(192, 191, 191)");
+            }
+            listAnswers_Holland[questionId] = +$(this).attr('data-answer-uid');
+            $.cookie("answers_holland", JSON.stringify(listAnswers_Holland), { path: '/' });
+        });
+        $('#right').on('click', function () {
+            if (totalQuestion != totalAnswerChecked) {
+                alert('Bạn còn ' + (totalQuestion - totalAnswerChecked) + ' câu chưa trả lời!')
+            }
+        });
+        $('.ajax-get-list-answer').on('click', function () {
+            if (totalQuestion != totalAnswerChecked) {
+                alert('Bạn còn ' + (totalQuestion - totalAnswerChecked) + ' câu chưa trả lời!')
+            }
+            else {
+                var type = $('.question').attr('data-method-type');
+                if (type == 1) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Method/Result',
+                        data: {
+                            "data": JSON.stringify(listAnswers_Holland),
+                            "type": 1
+                        },
+                        dataType: 'json',
+                        success: function (response) {
+                            $.removeCookie('answers_holland', { path: '/' });
+                            listAnswers_Holland = {};
+                            $.cookie('result_holland', response.result, { path: '/' })
+                            $.cookie('check-method', 1, { path: '/' });
+                            if ($.cookie('check-information') == 'true') {
+                                location.href = '/ket-qua-holland/';
+                            }
+                            else {
+                                location.href = '/cap-nhat-thong-tin/';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+}

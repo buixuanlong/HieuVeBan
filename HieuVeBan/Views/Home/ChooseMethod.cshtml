@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Trắc nghiệm nghề nghiệp";
+}
+
+<div class="choose-container">
+    <div class="main-container">
+        <div class="main-content">
+            <div class="main-content__introduce">
+                Bằng các trắc nghiệm về tính cách, sở thích, bạn có thể định hướng được những nghề nghiệp phù hợp với tương lai. Trang web này là nơi UEH gửi đến bạn những phương pháp định hướng nghề nghiệp một cách khoa học, được các hiệp hội thế giới
+                công nhận:
+            </div>
+            <div class="method">
+                <div class="method-img" id="img1">
+                </div>
+                <div id="hrefHolland" class="method-content">
+                    <div class="method-content__title">
+                        Phương pháp Holland <span style="color: #f26f33; font-size: 0.9em"><i id="holland_modal" class="fa-solid fa-circle-info toggle" id="holland_popup" data-target="hollandPopup"></i></span>
+                    </div>
+                    <div class="method-content__author">
+                        Tác giả: Nhà tâm lý học nổi tiếng John Holland
+                    </div>
+                    <div class="method-content__description">
+                        Dựa trên lý thuyết hướng nghiệp theo 06 nhóm tính cách khác nhau trong xã hội: Kỹ thuật, Nghiên cứu, Nghệ thuật, Xã hội, Quản lý, Nghiệp vụ.
+                    </div>
+                    <div class="method-content__rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="method-content__icon">
+                        <i class="fa-solid fa-angles-right icon-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="hollandPopup" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div>Phương pháp Holland <span class="close">&times;</span></div>
+                    <p>Thông qua 60 câu hỏi với 06 nhóm ngành nghề, người trả lời có thể xác định nhóm ngành nghề nổi trội, môi trường nghề nghiệp đem lại cảm giác thoải mái và thích hợp nhất tương ứng với xu hướng của bản thân.</p>
+                </div>
+
+            </div>
+            <div id="mbtiPopup" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div>Phương pháp MBTI <span class="close close1">&times;</span></div>
+                    <p>Thông qua 50 câu hỏi, người trả lời có thể xác định 04 chữ cái đại diện cho đặc điểm và xu hướng cá tính bản thân, từ đó đánh giá mức độ phù hợp với công việc cũng như môi trường làm việc.</p>
+                </div>
+
+            </div>
+            <div class="method">
+                <div class="method-img" id="img2">
+                </div>
+                <div id="hrefMBTI" class="method-content">
+                    <div class="method-content__title">
+                        Phương pháp MBTI <span style="color: #f26f33; font-size: 0.9em"><i id="mbti_modal" class="fa-solid fa-circle-info"></i></span>
+                    </div>
+                    <div class="method-content__author">
+                        Dựa trên nền tảng lý thuyết của nhà tâm lý học nổi tiếng Carl Gustav Jung
+                    </div>
+                    <div class="method-content__description">
+                        Phương pháp giúp người trả lời có thể tìm hiểu cá tính bản thân thông qua 04 cặp cá tính đối lập: Hướng ngoại - Hướng nội, Trực giác - Cảm giác, Lý trí - Cảm xúc, Nguyên tắc - Linh hoạt.
+                    </div>
+                    <div class="method-content__rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="method-content__icon">
+                        <i class="fa-solid fa-angles-right icon-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="note">
+                * Quý phụ huynh và học sinh nên trắc nghiệm cả 02 phương pháp để tìm ra định hướng phù hợp nhất.
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/assets/js/choose-method.js"></script>
+}

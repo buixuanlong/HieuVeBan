@@ -1,0 +1,189 @@
+﻿@using HieuVeBan.Models.Entities
+@using HieuVeBan.Models.Entities.OldEntities
+@{
+    ViewData["Title"] = "Kết quả Holland";
+    List<HobbyGroup_HOLLAND> hobbyGroup_HOLLANDs = ViewBag.hobbyGroup_HOLLANDs;
+    List<FinalResultHOLLAND> finalResultHOLLANDs = ViewBag.finalResultHOLLANDs;
+    List<Images_HOLLAND> images_HOLLANDs = ViewBag.images_HOLLANDs;
+    string symbol = ViewBag.Symbol;
+}
+<style>
+    .main-body {
+        background: url('../../assets/img/holland.png') 0% 0% / 100% no-repeat;
+    }
+
+    .famous-people__first--img {
+        height: 90%;
+    }
+
+    .famous-people__second--img {
+        height: 90%;
+    }
+
+    .famous-people__second {
+        right: 8%;
+    }
+
+    .famous-people__first {
+        right: 50%;
+    }
+
+    .container-result {
+        display: block;
+    }
+
+    .container-result-body {
+        display: block;
+    }
+</style>
+<div class="main-body">
+    <div class="famous-people">
+        <div class="famous-people__first">
+            <div class="famous-people__first--img" style="background-image: url('/assets/img/HOLLAND/@symbol/@(images_HOLLANDs[0].ImagePath)');"></div>
+            <div class="famous-people__first--title">
+                @(images_HOLLANDs[0].ImageName)
+            </div>
+        </div>
+        <div class="famous-people__second" style="height: 37%">
+            <div class="famous-people__second--img" style="background-image: url('/assets/img/HOLLAND/@symbol/@(images_HOLLANDs[1].ImagePath)');"></div>
+            <div class="famous-people__second--title">
+                @(images_HOLLANDs[1].ImageName)
+            </div>
+        </div>
+    </div>
+    <div class="container-result">
+        <div class="result-title">
+            <div class="result-title__horizontal-line"></div>
+            KẾT QUẢ
+            <div class="result-title__horizontal-line"></div>
+        </div>
+        <div class="container-result-body">
+            <div class="container-result-main">
+                @foreach (var hobbyGroup_HOLLAND in hobbyGroup_HOLLANDs)
+                {
+                    <div class="result-main__combination-mobile" style="display: block; font-size: 2.4rem;font-weight: 700;color: #005f69;margin-bottom: 20px; line-height:25px; text-align: center;">
+                        @hobbyGroup_HOLLAND.DisplayText
+                    </div>
+                    <div class="result-description" style="padding-right: 70px;">
+                        <div class="result-description__title">Mô tả nhóm tính cách của bạn</div>
+                        <div class="result-description__content">@hobbyGroup_HOLLAND.Description</div>
+                    </div>
+                    <div class="result-description" style="padding-right: 70px;">
+                        <div class="result-description__title">Người nổi tiếng cùng nhóm tính cách với bạn</div>
+                    </div>
+                    <div class="result-main" style="padding-bottom: 30px; padding-right: 70px;">
+                        <table class="result-main__table" style="width: 100%;">
+                            <thead class="table-header">
+                                <tr>
+                                    <th>Người nổi tiếng</th>
+                                    <th>Mô tả sơ lược</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body" style="vertical-align: text-top;">
+                                @foreach (var item in images_HOLLANDs)
+                                {
+                                    if (item.HobbyGroup_HOLLAND_Id == hobbyGroup_HOLLAND.Id)
+                                    {
+                                        <tr>
+                                            <td style="text-align: center"><span style="color: #f26f33; font-weight: bold; margin-bottom:20px;">@item.ImageName</span><br /><img src="~/assets/img/HOLLAND/@hobbyGroup_HOLLAND.Symbol/@(item.ImagePath)" style="width:70%;" /></td>
+                                            <td>@item.ImageInfo</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="result-description" style="padding-right: 70px;">
+                        <div class="result-description__title">Nghề/Nhóm nghề phù hợp với bạn</div>
+                    </div>
+                    <div class="result-main" style="padding-bottom: 30px; padding-right: 70px;">
+                        <style>
+                            .custom-table td {
+                                text-align: left;
+                            }
+                        </style>
+                        <div style="overflow-x: auto">
+                            <table class="result-main__table custom-table" style="width: 100%; margin-bottom: 20px; table-layout: auto">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th style="min-width: 300px" rowspan="2">Nghề/Nhóm nghề phù hợp với bạn theo khảo sát <br />(Làm gì thì phù hợp)</th>
+                                        <th style="min-width: 300px">Nên học gì tại Việt Nam</th>
+                                        <th style="color: #f26f33" colspan="8">Nên học gì tại UEH</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Các chương trình đào tạo tương ứng tại các Đại học ở Việt Nam</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các ngành đào tạo hệ Đại học chính quy</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Văn bằng 2 - Đại học chính quy</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Liên thông Cao đẳng - Đại học chính quy</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Văn bằng 1 - Vừa làm vừa học</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Văn bằng 2 - Vừa làm vừa học</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Liên thông Cao đẳng - Vừa làm vừa học</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Liên thông trung cấp - Vừa làm vừa học</th>
+                                        <th style="color: #f26f33; min-width: 300px;">Các chương trình đào tạo Thạc sĩ</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-body" style="vertical-align: text-top;">
+                                    @for (int i = 0; i < finalResultHOLLANDs.Count; i++)
+                                    {
+                                        @if (finalResultHOLLANDs[i].HobbyGroup_HOLLAND_Id == hobbyGroup_HOLLAND.Id)
+                                        {
+                                            @if (i % 2 == 0)
+                                            {
+                                                <tr>
+                                                    <td>@finalResultHOLLANDs[i].SuitableOccupationalGroup</td>
+                                                    <td>@finalResultHOLLANDs[i].EducationProgram_VN</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_UEH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_VB2DHCQ)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_LTCDDHCQ)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_VB1VLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_VB2VLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_LTCDVLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_LTTCVLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_ThacSi)</td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr class="tr-background">
+                                                    <td>@finalResultHOLLANDs[i].SuitableOccupationalGroup</td>
+                                                    <td>@finalResultHOLLANDs[i].EducationProgram_VN</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_UEH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_VB2DHCQ)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_LTCDDHCQ)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_VB1VLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_VB2VLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_LTCDVLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_LTTCVLVH)</td>
+                                                    <td>@Html.Raw(@finalResultHOLLANDs[i].EducationProgram_ThacSi)</td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="container-result-note">
+            <div class="result-note" style="padding-right: 70px;">
+                <span class="result-note__title">Lưu ý: </span> Kết quả có tính chất tham khảo, hỗ trợ định hướng nghề nghiệp cho học sinh & phụ huynh, ngoài 02 phương pháp này, còn có nhiều phương pháp khác như: Holland/MBTI, sinh trắc vân tay, trắc
+                nghiệm khác. Khảo sát thêm phương pháp MBTI
+                <a href="/phuong-phap-dinh-huong-nghe-nghiep/mbti/" class="result-note__link">
+                    tại đây.
+                </a>
+            </div>
+            <div class="result-advice" style="margin-bottom: 30px; padding-right: 70px;">
+                <span class="result-advice__title">Lời khuyên: </span> Quý phụ huynh, học sinh tìm kiếm "Tên ngành" ở cột 2 tại các trình duyệt web để tìm Đại học thích hợp.
+            </div>
+        </div>
+        <div class="result-description" style="width: 100%;display: flex;justify-content: flex-end;padding: 0; padding-right: 70px;font-size: 1.6rem;color: #333;margin-bottom: 20px;">
+            <a href="/phuong-phap-dinh-huong-nghe-nghiep/mbti/" style="color: #333;text-decoration:none;cursor: pointer;user-select: none;">
+                Về phương pháp MBTI
+                <i class="fa-solid fa-angles-right icon-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'uehfonts';
+  src:  url('fonts/uehfonts.eot?b7czd7');
+  src:  url('fonts/uehfonts.eot?b7czd7#iefix') format('embedded-opentype'),
+    url('fonts/uehfonts.ttf?b7czd7') format('truetype'),
+    url('fonts/uehfonts.woff?b7czd7') format('woff'),
+    url('fonts/uehfonts.svg?b7czd7#uehfonts') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ueh-"], [class*=" ueh-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'uehfonts' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ueh-guide:before {
+  content: "\e91f";
+}
+.ueh-audit:before {
+  content: "\e91d";
+}
+.ueh-role:before {
+  content: "\e91a";
+}
+.ueh-review:before {
+  content: "\e919";
+}
+.ueh-customer:before {
+  content: "\e918";
+}
+.ueh-category:before {
+  content: "\e917";
+}
+.ueh-poster:before {
+  content: "\e916";
+}
+.ueh-accept:before {
+  content: "\e915";
+}
+.ueh-invoices:before {
+  content: "\e900";
+}
+.ueh-logo:before {
+  content: "\1f31d";
+}
+.ueh-sms:before {
+  content: "\e901";
+}
+.ueh-email:before {
+  content: "\e902";
+}
+.ueh-attach_money:before {
+  content: "\e913";
+}
+.ueh-money_off:before {
+  content: "\e914";
+}
+.ueh-keyboard_arrow_down:before {
+  content: "\e903";
+}
+.ueh-keyboard_arrow_left:before {
+  content: "\e904";
+}
+.ueh-keyboard_arrow_right:before {
+  content: "\e906";
+}
+.ueh-keyboard_arrow_up:before {
+  content: "\e907";
+}
+.ueh-arrow_back:before {
+  content: "\e908";
+}
+.ueh-arrow_drop_down:before {
+  content: "\e909";
+}
+.ueh-arrow_drop_up:before {
+  content: "\e90a";
+}
+.ueh-arrow_forward:before {
+  content: "\e90b";
+}
+.ueh-arrow_upward:before {
+  content: "\e90c";
+}
+.ueh-subdirectory_arrow_left:before {
+  content: "\e90d";
+}
+.ueh-subdirectory_arrow_right:before {
+  content: "\e90e";
+}
+.ueh-arrow_downward:before {
+  content: "\e90f";
+}
+.ueh-arrow_left:before {
+  content: "\e910";
+}
+.ueh-arrow_right:before {
+  content: "\e911";
+}
+.ueh-notifications_none:before {
+  content: "\e91b";
+}
+.ueh-notifications_active:before {
+  content: "\e91c";
+}
+.ueh-person:before {
+  content: "\e91e";
+}
+.ueh-dashboard:before {
+  content: "\e912";
+}
+.ueh-edit:before {
+  content: "\e905";
+}
+.ueh-user:before {
+  content: "\e971";
+}
+.ueh-pie-chart:before {
+  content: "\e99a";
+}
+.ueh-stats-dots:before {
+  content: "\e99b";
+}
+.ueh-stats-bars:before {
+  content: "\e99c";
+}
+.ueh-delete:before {
+  content: "\e9ac";
+}
+.ueh-view:before {
+  content: "\e9ce";
+}
+.ueh-unview:before {
+  content: "\e9d1";
+}
+.ueh-info:before {
+  content: "\ea0c";
+}

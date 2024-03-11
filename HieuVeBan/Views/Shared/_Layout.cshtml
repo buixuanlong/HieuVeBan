@@ -1,49 +1,179 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HieuVeBan</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HieuVeBan.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css?v=12" media="screen">
+    <link rel="stylesheet" href="~/assets/css/base.css?v=12" media="screen">
+    <link rel="shortcut icon" href="~/assets/img/logo_ueh_title.png">
+
+    <title>@ViewData["Title"]</title>
+    @await RenderSectionAsync("Css", required: false)
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="University of Economics Ho Chi Minh City" />
+    <meta property="og:image" content="https://ueh.edu.vn/images/ueh-logo.jpg" />
+    <meta property="og:image:width" content="1575" />
+    <meta property="og:image:height" content="1019" />
+    <meta property="og:site_name" content="Đại học Kinh tế TP. Hồ Chí Minh" />
+    <meta property="og:description" content="Đại học Kinh tế TP. Hồ Chí Minh được thành lập từ năm 1976, là một trường đại học đa ngành, với nhiều bậc, hệ đào tạo đa dạng. Trường có đội ngũ giáo sư, giảng viên được đào tạo từ nhiều nguồn, có trình độ cao, có uy tín khoa học và chuyên môn." />
+    <meta property="og:url" content="https://hieuveban.ueh.edu.vn" />
+    <meta property="og:type" content="website" />
+
+    <meta name="keywords" content="University of Economics Ho Chi Minh City, Đại học Kinh tế TP.HCM, UEH, Đại học Kinh tế TP.HCM">
+    <meta name='robots' content='index, follow' />
+    <meta name="description" content="Đại học Kinh tế TP. Hồ Chí Minh được thành lập từ năm 1976, là một trường đại học đa ngành, với nhiều bậc, hệ đào tạo đa dạng. Trường có đội ngũ giáo sư, giảng viên được đào tạo từ nhiều nguồn, có trình độ cao, có uy tín khoa học và chuyên môn." />
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HieuVeBan</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    @RenderBody()
+    @Html.AntiForgeryToken()
+    <footer class="footer-global">
+        <div class="column-3 none-mobile">
+            <div>
+                <ul style="list-style-type: none; margin-left: 10px;" class="footer-first-ul">
+                    <li style="margin-bottom: 5px;">
+                        <a href="/">
+                            <img class="footer-logo" src="https://ueh.edu.vn/images/logo-footer.png" alt="Đại học Kinh tế TP. Hồ Chí Minh">
+                        </a>
+                    </li>
+                    <li class="footer-title">
+                        59C Nguyễn Đình Chiểu, Quận 3, TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        Email: info@ueh.edu.vn
+                    </li>
+                    <li class="footer-title">
+                        © @(DateTime.Now.Year) Đại học Kinh tế TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        <a href="http://cntt.ueh.edu.vn" target="_blank">
+                            Phát triển bởi Phòng Công
+                            nghệ thông tin
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer-icon" style="padding-left: 40px; margin-top: 20px;">
+                    <a title="Facebook" data-ga-label="Facebook" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/facebook" target="_blank">
+                        <i class="icon-footer fa-brands fa-facebook-square"></i>
+                    </a>
+                    <a title="YouTube" data-ga-label="YouTube" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/youtube" target="_blank">
+                        <i class="icon-footer fa-brands fa-youtube"></i>
+                    </a>
+                    <a title="Spotify" data-ga-label="Spotify" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/spotify" target="_blank">
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                    <a title="Linkedin" data-ga-label="Linkedin" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/linkedin" target="_blank">
+                        <i class="icon-footer fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a title="Instagram" data-ga-label="Instagram" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/instagram" target="_blank">
+                        <i class="icon-footer fa-brands fa-instagram"></i>
+                    </a>
+                    <a title="Tiktok" data-ga-label="Tiktok" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/tiktok" target="_blank">
+                        <i class="icon-footer fa-brands fa-tiktok"></i>
+                    </a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - HieuVeBan - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div class="column-3 column-mobile-12" style="padding-top: 55px;">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li class="footer-title">
+                        <a href="https://tuyensinh.ueh.edu.vn/">UEH Tuyển sinh</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://future.ueh.edu.vn/" target="_blank">UEH Future</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://gogreen.ueh.edu.vn/" target="_blank">UEH Green Campus</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12" style="padding-top: 55px;">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li class="footer-title">
+                        <a href="https://ueh.edu.vn/" target="_blank">UEH Portal</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://virtualtour.ueh.edu.vn/" target="_blank">UEH Virtual Tour</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12" style="padding-top: 55px;">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li class="footer-title">
+                        <a href="https://global.ueh.edu.vn/" target="_blank">UEH Global</a>
+                    </li>
+                    <li class="footer-title">
+                        <a href="https://future.ueh.edu.vn/giving/" target="_blank">UEH Giving</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-3 column-mobile-12 yes-mobile">
+            <div>
+                <ul style="list-style-type: none;">
+                    <li style="margin-bottom: 5px;">
+                        <a href="/">
+                            <img class="footer-logo" src="~/assets/img/logo-footer.png" alt="Đại học Kinh tế TP. Hồ Chí Minh">
+                        </a>
+                    </li>
+                    <li class="footer-title">
+                        59C Nguyễn Đình Chiểu, Quận 3, TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        Email: info@ueh.edu.vn
+                    </li>
+                    <li class="footer-title">
+                        © @(DateTime.Now.Year) Đại học Kinh tế TP. Hồ Chí Minh
+                    </li>
+                    <li class="footer-title">
+                        <a href="http://cntt.ueh.edu.vn" target="_blank">
+                            Phát triển bởi Phòng Công
+                            nghệ thông tin
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer-icon" style="padding-left: 40px; margin-top: 20px;">
+                    <a title="Facebook" data-ga-label="Facebook" style="font-size:2.5rem !important;text-decoration:none; color: #fff;" href="https://go.ueh.edu.vn/facebook" target="_blank">
+                        <i class="fa-brands fa-facebook-square"></i>
+                    </a>
+                    <a title="YouTube" data-ga-label="YouTube" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/youtube" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a title="Spotify" data-ga-label="Spotify" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/spotify" target="_blank">
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                    <a title="Linkedin" data-ga-label="Linkedin" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/linkedin" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a title="Instagram" data-ga-label="Instagram" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/instagram" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a title="Tiktok" data-ga-label="Tiktok" style="font-size:2.5rem !important;text-decoration:none; color: #fff; margin-left: 10px;" href="https://go.ueh.edu.vn/tiktok" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXXZ9BTT9S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PXXZ9BTT9S');
+    </script>
+    <script src="~/admin/libs/jquery/jquery.min.js"></script>
+    <script src="~/admin/libs/jquery/jquery.cookie.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
