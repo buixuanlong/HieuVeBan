@@ -21,7 +21,7 @@ namespace HieuVeBan.Data
         public DbSet<HollandAnswer> HollandAnswers { get; set; }
         public DbSet<MBTIAnswer> MBTIAnswers { get; set; }
         public DbSet<UserObject> UserObjects { get; set; }
-        public DbSet<UserInformation> UserInformations { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<AdministrativeRegion> AdministrativeRegions { get; set; }
         public DbSet<AdministrativeUnit> AdministrativeUnits { get; set; }
@@ -30,6 +30,10 @@ namespace HieuVeBan.Data
         public DbSet<MBTIPersonalityGroup> MBTIPersonalityGroups { get; set; }
         public DbSet<MBTIResult> MBTIResults { get; set; }
         public DbSet<MBTICelebrity> MBTICelebrities { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<EducationProgramType> EducationProgramTypes { get; set; }
+        public DbSet<EducationProgram> EducationPrograms { get; set; }
+        public DbSet<UserHistory> UserHistories { get; set; }
 
         //TODO: Remove
         public DbSet<TaiKhoan> TaiKhoan { get; set; }

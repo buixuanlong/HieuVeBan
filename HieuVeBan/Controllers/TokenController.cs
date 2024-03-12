@@ -9,7 +9,7 @@ namespace HieuVeBan.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/token")]
-    public class UsersController(
+    public class TokenController(
         IAppUserService appUserService,
         ITokenService tokenService) : Controller
     {

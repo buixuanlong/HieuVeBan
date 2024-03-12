@@ -23,21 +23,21 @@ namespace HieuVeBan.Services
         }
 
         public Task<UserInformationModel?> GetUserInformationByIdAsync(Guid id, CancellationToken cancellationToken = default)
-        => _applicationDbContext.UserInformations
+        => _applicationDbContext.Users
             .Where(x => x.Id == id)
             .ProjectTo<UserInformationModel>(_mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(cancellationToken);
 
         public Task<UserInformationModel?> GetUserInformationAsync(string search, CancellationToken cancellationToken = default)
-        => _applicationDbContext.UserInformations
+        => _applicationDbContext.Users
             .Where(x => EF.Functions.Like(x.Phone, search) || EF.Functions.Like(x.Email, search))
             .ProjectTo<UserInformationModel>(_mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(cancellationToken);
 
         public async Task<Guid> CreateUserInformationAsync(UserInformationCreateModel model)
         {
-            var newUserInfor = _mapper.Map<UserInformation>(model);
-            _applicationDbContext.UserInformations.Add(newUserInfor);
+            var newUserInfor = _mapper.Map<User>(model);
+            _applicationDbContext.Users.Add(newUserInfor);
             await _applicationDbContext.SaveChangesAsync();
 
             return newUserInfor.Id;

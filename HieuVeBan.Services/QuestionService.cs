@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using HieuVeBan.Abstraction.Exceptions;
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Data;
 using HieuVeBan.Models.Commands.QueryParams;
@@ -26,10 +27,11 @@ namespace HieuVeBan.Services
         public async Task<PagedList<MBTIQuestionModel>> GetMBTIQuestionsAsync(QuestionQueryParams queryParams, CancellationToken cancellationToken = default)
         {
             var method = await _applicationDbContext.PersonalityAssessmentMethods
-                .Where(x => x.Type == MethodType.MBTI).FirstOrDefaultAsync();
+                .Where(x => x.Type == MethodType.MBTI).FirstOrDefaultAsync()
+                ?? throw new NotFoundException(nameof(PersonalityAssessmentMethod));
 
             var query = _applicationDbContext.PersonalityAssessmentQuestions
-                .Where(x => x.PersonalityAssessmentMethodId == method!.Id)
+                .Where(x => x.PersonalityAssessmentMethodId == method.Id)
                 .AsQueryable();
 
             query = query.OrderBy(x => x.QuestionNumber);
@@ -50,10 +52,11 @@ namespace HieuVeBan.Services
         public async Task<PagedList<QuestionModel>> GetHollandQuestionsAsync(QuestionQueryParams queryParams, CancellationToken cancellationToken = default)
         {
             var method = await _applicationDbContext.PersonalityAssessmentMethods
-                .Where(x => x.Type == MethodType.Holland).FirstOrDefaultAsync();
+                .Where(x => x.Type == MethodType.Holland).FirstOrDefaultAsync()
+                ?? throw new NotFoundException(nameof(PersonalityAssessmentMethod));
 
             var query = _applicationDbContext.PersonalityAssessmentQuestions
-                .Where(x => x.PersonalityAssessmentMethodId == method!.Id)
+                .Where(x => x.PersonalityAssessmentMethodId == method.Id)
                 .AsQueryable();
 
             query = query.OrderBy(x => x.QuestionNumber);

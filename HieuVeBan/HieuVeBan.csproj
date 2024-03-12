@@ -22,12 +22,17 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Telegram.Alternative" Version="1.4.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HieuVeBan.Abstraction\HieuVeBan.Abstraction.csproj" />
     <ProjectReference Include="..\HieuVeBan.Services\HieuVeBan.Services.csproj" />
     <ProjectReference Include="..\HieuVeBan.Data\HieuVeBan.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\data\export_excel\" />
   </ItemGroup>
 
 </Project>

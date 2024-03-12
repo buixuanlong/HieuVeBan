@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 namespace HieuVeBan.Controllers
 {
     //TODO: Refactor
-    public class MethodController : Controller
+    public class MethodController : BaseController
     {
         private readonly IAdminService _adminService;
 

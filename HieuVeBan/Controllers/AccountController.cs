@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace HieuVeBan.Controllers
 {
     //TODO: Refactor
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IAdminService _adminService;
         public AccountController(IAdminService adminService)

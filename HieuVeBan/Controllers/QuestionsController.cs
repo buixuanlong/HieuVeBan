@@ -1,17 +1,13 @@
 ﻿using Asp.Versioning;
-using HieuVeBan.Abstraction.Security;
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Models.Commands.QueryParams;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HieuVeBan.Controllers
 {
-    [Authorize(Policy = SecurityConstant.Policies.ExternalPolicy)]
-    [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/questions")]
-    public class QuestionsController : Controller
+    public class QuestionsController : BaseApiController
     {
         private readonly IQuestionService _personalityAssessmentQuestionService;
 

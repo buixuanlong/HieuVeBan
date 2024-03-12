@@ -1,12 +1,14 @@
 ﻿using Asp.Versioning;
 using HieuVeBan.Abstraction.Security;
 using HieuVeBan.Contracts.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HieuVeBan.Controllers
 {
-    [Authorize(Policy = SecurityConstant.Policies.ExternalPolicy)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
+        Policy = SecurityConstant.Policies.ExternalPolicy)]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/user-objects")]

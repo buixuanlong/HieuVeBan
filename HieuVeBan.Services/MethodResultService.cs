@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using HieuVeBan.Abstraction.Exceptions;
 using HieuVeBan.Contracts.Services;
 using HieuVeBan.Data;
 using HieuVeBan.Models.Commands;
+using HieuVeBan.Models.Entities;
 using HieuVeBan.Models.Enum;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,9 +27,8 @@ namespace HieuVeBan.Services
 
         private async Task<string> CalculateResult(SurveyResultModel model)
         {
-            var method = await _methodService.GetMethodAsync(model.MethodId);
-
-            if (method is null) return string.Empty;
+            var method = await _methodService.GetMethodAsync(model.MethodId)
+                ?? throw new NotFoundException(nameof(PersonalityAssessmentMethod));
 
             var result = "";
 
@@ -48,9 +49,8 @@ namespace HieuVeBan.Services
                     foreach (var item in model.Results)
                     {
                         var mbtiResult = mbtiResults.Where(x => x.MBTIAnswerId == item.AnswerId
-                            && x.PersonalityAssessmentQuestionId == item.QuestionId).FirstOrDefault();
-
-                        if (mbtiResult == null) return null;
+                            && x.PersonalityAssessmentQuestionId == item.QuestionId).FirstOrDefault()
+                        ?? throw new NotFoundException("Cannot get MBTI Result");
 
                         if (scoringResults.ContainsKey(mbtiResult.MBTIFunctionalFactor.Symbol))
                         {

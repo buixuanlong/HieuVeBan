@@ -6,7 +6,7 @@ namespace System.Linq
     public static class QueryableExtensions
     {
         public static IOrderedQueryable<TSource> OrderBy<TSource>(
-       this IQueryable<TSource> query, string propertyName)
+            this IQueryable<TSource> query, string propertyName)
         {
             var entityType = typeof(TSource);
 
@@ -38,7 +38,7 @@ namespace System.Linq
             return newQuery;
         }
         public static IOrderedQueryable<TSource> OrderByDescending<TSource>(
-     this IQueryable<TSource> query, string propertyName)
+            this IQueryable<TSource> query, string propertyName)
         {
             var entityType = typeof(TSource);
 

@@ -41,7 +41,6 @@ class AppUserService(
            .AnyAsync(x => x.UserName == userName
                || x.UserEmail == email, cancellationToken))
         {
-
             return Result.Failure<Guid>(UserErrors.AlreadyExists);
         }
 
@@ -111,5 +110,4 @@ public static class UserErrors
 {
     public static Error InvalidPassword = new("User.InvalidPassword", "Invalid password. Please check your password and try again");
     public static Error AlreadyExists = new("User.AlreadyExists", "User already exists");
-
 }

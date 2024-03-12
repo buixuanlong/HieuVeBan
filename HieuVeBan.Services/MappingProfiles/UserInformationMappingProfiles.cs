@@ -9,8 +9,8 @@ public class UserInformationMappingProfiles : Profile
 {
     public UserInformationMappingProfiles()
     {
-        CreateMap<UserInformationCreateModel, UserInformation>();
-        CreateMap<UserInformation, UserInformationModel>()
+        CreateMap<UserInformationCreateModel, User>();
+        CreateMap<User, UserInformationModel>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
     }
 }

@@ -3,7 +3,7 @@ using HieuVeBan.Models.Abstractions.Entities;
 
 namespace HieuVeBan.Models.Entities
 {
-    public class UserInformation : BaseEntity<Guid>, ICreatedDateTime
+    public class User : BaseEntity<Guid>, ICreatedDateTime
     {
         public string Name { get; set; } = null!;
         public DateTime Dob { get; set; }

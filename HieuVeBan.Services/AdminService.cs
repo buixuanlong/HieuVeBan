@@ -3,6 +3,7 @@ using HieuVeBan.Contracts.Services;
 using HieuVeBan.Data;
 using HieuVeBan.Models.Entities.OldEntities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace HieuVeBan.Services
 {
@@ -10,13 +11,16 @@ namespace HieuVeBan.Services
     public class AdminService : IAdminService
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<AdminService> _logger;
         private readonly IMapper _mapper;
 
         public AdminService(
             ApplicationDbContext applicationDbContext,
+            ILogger<AdminService> logger,
             IMapper mapper)
         {
             _context = applicationDbContext;
+            _logger = logger;
             _mapper = mapper;
         }
 
@@ -48,34 +52,26 @@ namespace HieuVeBan.Services
         {
             try
             {
-                IQueryable<TaiKhoan> model;
+                var query = _context.TaiKhoan.AsQueryable();
+
                 if (!string.IsNullOrEmpty(search))
                 {
-                    model = _context.TaiKhoan.Where(a => a.HoTen.ToLower().Contains(search.ToLower())
-                    || a.Email.ToLower().Contains(search.ToLower())
-                    || a.MaQuanLy.ToLower().Contains(search.ToLower())
-                    ).AsQueryable();
-                    if (limit == -1)
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).ToList(), model.Count());
-                    }
-                    else
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).Take(limit).ToList(), model.Count());
-                    }
+                    string searchLower = search.ToLower();
+                    query = query.Where(a => a.HoTen.ToLower().Contains(searchLower)
+                                            || a.Email.ToLower().Contains(searchLower)
+                                            || a.MaQuanLy.ToLower().Contains(searchLower));
                 }
+
+                if (sortColumnDir.ToLower() == "desc")
+                    query = query.OrderByDescending(sortColumn);
                 else
-                {
-                    model = _context.TaiKhoan.AsQueryable();
-                    if (limit == -1)
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).ToList(), model.Count());
-                    }
-                    else
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).Take(limit).ToList(), model.Count());
-                    }
-                }
+                    query = query.OrderBy(sortColumn);
+
+                int totalCount = query.Count();
+                if (limit != -1)
+                    query = query.Skip(offset).Take(limit);
+
+                return (query.ToList(), totalCount);
             }
             catch (Exception e)
             {
@@ -87,42 +83,42 @@ namespace HieuVeBan.Services
         {
             try
             {
-                IQueryable<Information> model;
+                var query = _context.Information
+                    .Where(p => p.Created_At >= DateTime.ParseExact(fromDt, "dd/MM/yyyy", null)
+                    && p.Created_At <= DateTime.ParseExact(toDt, "dd/MM/yyyy", null)).AsQueryable();
+
                 if (!string.IsNullOrEmpty(search))
                 {
-                    model = _context.Information.Where(p => p.Created_At >= DateTime.ParseExact(fromDt, "dd/MM/yyyy", null)
-                    && p.Created_At <= DateTime.ParseExact(toDt, "dd/MM/yyyy", null)
-                    && (p.Email.ToLower().Contains(search.ToLower())
-                    || p.Name.ToLower().Contains(search.ToLower())
-                    || p.PhoneNumber.ToLower().Contains(search.ToLower()))).AsQueryable();
-                    if (limit == -1)
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).ToList(), model.Count());
-                    }
-                    else
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).Take(limit).ToList(), model.Count());
-                    }
+                    string searchLower = search.ToLower();
+                    query = query.Where(p => p.Email.ToLower().Contains(searchLower)
+                                          || p.Name.ToLower().Contains(searchLower)
+                                          || p.PhoneNumber!.ToLower().Contains(searchLower));
+                }
+
+                if (string.IsNullOrEmpty(sortColumn) || string.IsNullOrEmpty(sortColumnDir))
+                {
+                    query = query.OrderByDescending(p => p.Created_At);
                 }
                 else
                 {
-                    model = _context.Information.Where(p => p.Created_At >= DateTime.ParseExact(fromDt, "dd/MM/yyyy", null) && p.Created_At <= DateTime.ParseExact(toDt, "dd/MM/yyyy", null)).AsQueryable();
-                    if (limit == -1)
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).ToList(), model.Count());
-                    }
+                    if (sortColumnDir.ToLower() == "desc")
+                        query = query.OrderByDescending(x => x.Id);
                     else
-                    {
-                        return (model.OrderBy(sortColumn + " " + sortColumnDir).Skip(offset).Take(limit).ToList(), model.Count());
-                    }
+                        query = query.OrderBy(x => x.Id);
                 }
+
+                int totalCount = query.Count();
+                if (limit != -1)
+                    query = query.Skip(offset).Take(limit);
+
+                return (query.ToList(), totalCount);
             }
             catch (Exception e)
             {
+                _logger.LogError(e, e.Message);
                 return (new List<Information>(), 0);
             }
         }
-
         public async Task<List<Information>> ExportExcelInfos(string fromDt, string toDt)
         {
             try
@@ -131,6 +127,7 @@ namespace HieuVeBan.Services
             }
             catch (Exception e)
             {
+                _logger.LogError(e, e.Message);
                 return null;
             }
         }

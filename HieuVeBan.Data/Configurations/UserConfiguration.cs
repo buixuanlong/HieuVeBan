@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HieuVeBan.Data.Configurations
 {
-    internal class UserInformationConfiguration : BaseEntityConfiguration<UserInformation, Guid>
+    internal class UserConfiguration : BaseEntityConfiguration<User, Guid>
     {
-        public override string TableName => "user_informations";
+        public override string TableName => "users";
 
-        public override void Configure(EntityTypeBuilder<UserInformation> builder)
+        public override void Configure(EntityTypeBuilder<User> builder)
         {
             base.Configure(builder);
 

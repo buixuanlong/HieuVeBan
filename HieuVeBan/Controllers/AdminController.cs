@@ -8,7 +8,7 @@ using OfficeOpenXml;
 namespace HieuVeBan.Controllers
 {
     [Route("admin")]
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly IAdminService _adminService;
         private readonly IWebHostEnvironment _webHostEnvironment;
