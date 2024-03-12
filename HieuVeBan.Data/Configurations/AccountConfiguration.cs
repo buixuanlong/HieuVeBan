@@ -1,7 +1,5 @@
 ﻿using HieuVeBan.Abstraction.EFCore.Configuration;
-using HieuVeBan.Data.Helpers;
 using HieuVeBan.Models.Entities;
-using HieuVeBan.Models.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -28,10 +26,15 @@ namespace HieuVeBan.Data.Configurations
                 .HasMaxLength(255)
                 .IsRequired();
 
-            builder.Property(x => x.Role)
-                .HasColumnName("role")
-                .HasComment(EnumHelpers.GetDescriptions<Role>())
+            builder.Property(x => x.RoleId)
+                .HasColumnName("role_id")
                 .IsRequired();
+
+            builder.HasOne(x => x.Role)
+                .WithMany()
+                .HasForeignKey(x => x.RoleId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

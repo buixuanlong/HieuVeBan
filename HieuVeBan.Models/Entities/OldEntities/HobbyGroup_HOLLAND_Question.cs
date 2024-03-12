@@ -8,7 +8,7 @@ namespace HieuVeBan.Models.Entities.OldEntities
         public int Id { get; set; }
         public int HobbyGroup_HOLLAND_Id { get; set; }
         public int Question_Id { get; set; }
-        public string Note { get; set; }
+        public string? Note { get; set; }
 
     }
 }

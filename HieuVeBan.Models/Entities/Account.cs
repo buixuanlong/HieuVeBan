@@ -1,5 +1,4 @@
 ﻿using HieuVeBan.Models.Abstractions.Entities;
-using HieuVeBan.Models.Enum;
 
 namespace HieuVeBan.Models.Entities
 {
@@ -7,6 +6,7 @@ namespace HieuVeBan.Models.Entities
     {
         public string Name { get; set; } = null!;
         public string Email { get; set; } = null!;
-        public Role Role { get; set; }
+        public Guid RoleId { get; set; }
+        public Role Role { get; set; } = null!;
     }
 }

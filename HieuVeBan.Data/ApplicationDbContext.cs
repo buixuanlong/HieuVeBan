@@ -34,6 +34,7 @@ namespace HieuVeBan.Data
         public DbSet<EducationProgramType> EducationProgramTypes { get; set; }
         public DbSet<EducationProgram> EducationPrograms { get; set; }
         public DbSet<UserHistory> UserHistories { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         //TODO: Remove
         public DbSet<TaiKhoan> TaiKhoan { get; set; }
